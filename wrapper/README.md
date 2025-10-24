@@ -85,7 +85,10 @@ CalCoreModel_LoadCoreSkeleton(model, "skeleton.csf");
 
 To complete the implementation:
 
-1. Implement Cal3D file format parsers (CSF, CAF, CMF formats)
+1. Implement Cal3D file format parsers:
+   - CSF (Cal3D Skeleton Format)
+   - CAF (Cal3D Animation Format)
+   - CMF (Cal3D Mesh Format)
 2. Implement skeleton/bone runtime functions  
 3. Implement animation sampling and blending
 4. Implement mesh deformation (skinning)
