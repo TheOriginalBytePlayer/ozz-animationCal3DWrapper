@@ -114,6 +114,9 @@ message("-- - ozz_build_postfix: " ${ozz_build_postfix})
 # Starts building the sources tree
 add_subdirectory(src)
 
+# Build the Cal3D wrapper library
+add_subdirectory(wrapper)
+
 # Continues with howtos
 if(ozz_build_howtos AND NOT EMSCRIPTEN)
   add_subdirectory(howtos)
