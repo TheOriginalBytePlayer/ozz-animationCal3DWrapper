@@ -10,6 +10,17 @@ ozz-animation provides runtime character animation playback functionalities (loa
 
 ozz-animation comes with the toolchain to convert from major Digital Content Creation formats (gltf, Fbx, Collada, Obj, 3ds, dxf) to ozz optimized runtime structures. Offline libraries are also provided to implement the conversion from any other animation and skeleton format.
 
+Cal3D Wrapper
+-------------
+
+This repository also includes a **drop-in replacement library for Cal3D** (`libcal3d.so`) that uses ozz-animation as its backend. This allows applications using the Cal3D API to benefit from ozz-animation's performance while maintaining API compatibility. See the [wrapper directory](wrapper/README.md) for details.
+
+The Cal3D wrapper:
+- Exports all 410+ Cal3D API functions
+- Provides the same interface as the original Cal3D library
+- Uses ozz-animation internally for skeletal animation
+- Can be used as a direct replacement for libcal3d
+
 Follow [this link](https://github.com/guillaumeblanc/ozz-animation/issues/175) for a list of projects using ozz-animation.
 
 Documentation
