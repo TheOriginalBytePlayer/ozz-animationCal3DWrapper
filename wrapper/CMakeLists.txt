@@ -7,9 +7,6 @@ project(cal3d_wrapper)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Define CAL3D_WRAPPER_EXPORTS for the build
-add_definitions(-DCAL3D_WRAPPER_EXPORTS)
-
 # Include directories
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -33,6 +30,9 @@ set(WRAPPER_HEADERS
 
 # Create shared library
 add_library(cal3d_wrapper SHARED ${WRAPPER_SOURCES} ${WRAPPER_HEADERS})
+
+# Define CAL3D_WRAPPER_EXPORTS for the library build only
+target_compile_definitions(cal3d_wrapper PRIVATE CAL3D_WRAPPER_EXPORTS)
 
 # Link with ozz libraries
 target_link_libraries(cal3d_wrapper
@@ -58,3 +58,12 @@ install(TARGETS cal3d_wrapper
 install(FILES ../cal3d_wrapper.h
     DESTINATION include
 )
+
+# Optional: Build example program
+option(BUILD_CAL3D_EXAMPLE "Build Cal3D wrapper example" OFF)  # Disabled by default due to C compatibility issues in header
+
+if(BUILD_CAL3D_EXAMPLE)
+    add_executable(cal3d_example example.c)
+    target_link_libraries(cal3d_example cal3d_wrapper)
+    target_include_directories(cal3d_example PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
+endif()
