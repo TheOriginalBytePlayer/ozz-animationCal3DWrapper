@@ -79,11 +79,13 @@ typedef int CalIndex;
 // to avoid any ambiguity with the struct type itself. In this case, we don't use the prefix.
 // On GCC/Clang, keep __attribute__ at the beginning with the prefix CAL3D_WRAPPER_API.
 #if defined(_WIN32) && !defined(__MINGW32__)
-	// On MSVC, define separate macros for prefix (empty for struct*) and middle position (has __declspec)
-	#define CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX
-	#define CAL3D_WRAPPER_API_STRUCT_PTR CAL3D_WRAPPER_API
+	// Emit the export attribute as a prefix on MSVC as well.
+	// This ensures declarations and definitions become:
+	//   __declspec(dllexport) struct Foo* Foo_New(...);
+	#define CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX CAL3D_WRAPPER_API
+	#define CAL3D_WRAPPER_API_STRUCT_PTR
 #else
-	// On GCC, use the attribute at the beginning, and nothing in the middle
+	// For GCC/Clang keep the attribute as a prefix as usual.
 	#define CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX CAL3D_WRAPPER_API
 	#define CAL3D_WRAPPER_API_STRUCT_PTR
 #endif

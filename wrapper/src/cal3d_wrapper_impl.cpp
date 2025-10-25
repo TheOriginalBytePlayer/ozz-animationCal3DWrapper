@@ -58,9 +58,11 @@ CAL3D_WRAPPER_API void CalError_PrintLastError() {
 // CalVector wrapper functions implementation                                 //
 //****************************************************************************//
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector* CAL3D_WRAPPER_API_STRUCT_PTR CalVector_New() {
-    return new CalVector();
-}
+CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector*
+    CAL3D_WRAPPER_API_STRUCT_PTR
+    CalVector_New() {
+  return new CalVector();
+};
 
 CAL3D_WRAPPER_API void CalVector_Delete(struct CalVector* self) {
     delete self;
