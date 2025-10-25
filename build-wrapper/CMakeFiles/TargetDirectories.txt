@@ -1,7 +1,0 @@
-/home/runner/work/ozz-animationCal3DWrapper/ozz-animationCal3DWrapper/build-wrapper/CMakeFiles/cal3d_wrapper.dir
-/home/runner/work/ozz-animationCal3DWrapper/ozz-animationCal3DWrapper/build-wrapper/CMakeFiles/edit_cache.dir
-/home/runner/work/ozz-animationCal3DWrapper/ozz-animationCal3DWrapper/build-wrapper/CMakeFiles/rebuild_cache.dir
-/home/runner/work/ozz-animationCal3DWrapper/ozz-animationCal3DWrapper/build-wrapper/CMakeFiles/list_install_components.dir
-/home/runner/work/ozz-animationCal3DWrapper/ozz-animationCal3DWrapper/build-wrapper/CMakeFiles/install.dir
-/home/runner/work/ozz-animationCal3DWrapper/ozz-animationCal3DWrapper/build-wrapper/CMakeFiles/install/local.dir
-/home/runner/work/ozz-animationCal3DWrapper/ozz-animationCal3DWrapper/build-wrapper/CMakeFiles/install/strip.dir
