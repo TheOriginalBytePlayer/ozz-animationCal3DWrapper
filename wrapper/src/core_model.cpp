@@ -5,7 +5,7 @@
 #include "cal3d_wrapper_internal.h"
 #include "cal3d_wrapper.h"
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreModel* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_New(const char* name) {
+CAL3D_WRAPPER_API void* CalCoreModel_New(const char* name) {
     auto model = new CalCoreModel();
     if (name) {
         model->name = name;
@@ -15,7 +15,7 @@ CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreModel* CAL3D_WRAPPER_API_STRUC
     return model;
 }
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreModel* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_NewCopy(struct CalCoreModel* other) {
+CAL3D_WRAPPER_API void* CalCoreModel_NewCopy(struct CalCoreModel* other) {
     if (!other) return nullptr;
     
     auto model = new CalCoreModel();
@@ -81,7 +81,7 @@ CAL3D_WRAPPER_API void CalCoreModel_SetName(struct CalCoreModel* self, const cha
     }
 }
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSkeleton* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreSkeleton(struct CalCoreModel* self) {
+CAL3D_WRAPPER_API void* CalCoreModel_GetCoreSkeleton(struct CalCoreModel* self) {
     return self ? self->coreSkeleton : nullptr;
 }
 
@@ -99,7 +99,7 @@ CAL3D_WRAPPER_API int CalCoreModel_AddCoreAnimation(struct CalCoreModel* self, s
     return id;
 }
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreAnimation* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreAnimation(struct CalCoreModel* self, int coreAnimationId) {
+CAL3D_WRAPPER_API void* CalCoreModel_GetCoreAnimation(struct CalCoreModel* self, int coreAnimationId) {
     if (!self || coreAnimationId < 0 || coreAnimationId >= (int)self->coreAnimations.size()) {
         return nullptr;
     }
@@ -118,7 +118,7 @@ CAL3D_WRAPPER_API int CalCoreModel_AddCoreMorphAnimation(struct CalCoreModel* se
     return id;
 }
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMorphAnimation* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreMorphAnimation(struct CalCoreModel* self, int morphAnimID) {
+CAL3D_WRAPPER_API void* CalCoreModel_GetCoreMorphAnimation(struct CalCoreModel* self, int morphAnimID) {
     if (!self || morphAnimID < 0 || morphAnimID >= (int)self->coreMorphAnimations.size()) {
         return nullptr;
     }
@@ -137,7 +137,7 @@ CAL3D_WRAPPER_API int CalCoreModel_AddCoreMaterial(struct CalCoreModel* self, st
     return id;
 }
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMaterial* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreMaterial(struct CalCoreModel* self, int coreMaterialId) {
+CAL3D_WRAPPER_API void* CalCoreModel_GetCoreMaterial(struct CalCoreModel* self, int coreMaterialId) {
     if (!self || coreMaterialId < 0 || coreMaterialId >= (int)self->coreMaterials.size()) {
         return nullptr;
     }
@@ -156,7 +156,7 @@ CAL3D_WRAPPER_API int CalCoreModel_AddCoreMesh(struct CalCoreModel* self, struct
     return id;
 }
 
-CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMesh* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreMesh(struct CalCoreModel* self, int coreMeshId) {
+CAL3D_WRAPPER_API void* CalCoreModel_GetCoreMesh(struct CalCoreModel* self, int coreMeshId) {
     if (!self || coreMeshId < 0 || coreMeshId >= (int)self->coreMeshes.size()) {
         return nullptr;
     }

@@ -3,6 +3,9 @@
  * 
  * This example demonstrates how to use the wrapper as a drop-in replacement
  * for the original Cal3D library.
+ * 
+ * NOTE: Functions that return struct pointers now return void* (opaque pointers).
+ * The client code is responsible for casting them to the appropriate struct type.
  */
 
 #include "cal3d_wrapper.h"
@@ -12,18 +15,18 @@ int main() {
     printf("Cal3D Wrapper Example\n");
     printf("=====================\n\n");
     
-    // Create a core model
-    struct CalCoreModel* coreModel = CalCoreModel_New("ExampleModel");
+    // Create a core model - returns void* which we cast to struct CalCoreModel*
+    struct CalCoreModel* coreModel = (struct CalCoreModel*)CalCoreModel_New("ExampleModel");
     if (!coreModel) {
         printf("Error: Failed to create core model\n");
         return 1;
     }
     printf("✓ Created core model: %s\n", CalCoreModel_GetName(coreModel));
     
-    // Vector operations example
-    struct CalVector* vec1 = CalVector_New();
-    struct CalVector* vec2 = CalVector_New();
-    struct CalVector* result = CalVector_New();
+    // Vector operations example - returns void* which we cast to struct CalVector*
+    struct CalVector* vec1 = (struct CalVector*)CalVector_New();
+    struct CalVector* vec2 = (struct CalVector*)CalVector_New();
+    struct CalVector* result = (struct CalVector*)CalVector_New();
     
     CalVector_Set(vec1, 1.0f, 2.0f, 3.0f);
     CalVector_Set(vec2, 4.0f, 5.0f, 6.0f);
@@ -60,10 +63,10 @@ int main() {
     printf("  normalized = (%.2f, %.2f, %.2f), length = %.2f\n", 
            v1[0], v1[1], v1[2], CalVector_Length(vec1));
     
-    // Quaternion operations example
-    struct CalQuaternion* quat1 = CalQuaternion_New();
-    struct CalQuaternion* quat2 = CalQuaternion_New();
-    struct CalQuaternion* quatResult = CalQuaternion_New();
+    // Quaternion operations example - returns void* which we cast to struct CalQuaternion*
+    struct CalQuaternion* quat1 = (struct CalQuaternion*)CalQuaternion_New();
+    struct CalQuaternion* quat2 = (struct CalQuaternion*)CalQuaternion_New();
+    struct CalQuaternion* quatResult = (struct CalQuaternion*)CalQuaternion_New();
     
     CalQuaternion_Set(quat1, 0.0f, 0.0f, 0.707f, 0.707f); // 90° around Z
     CalQuaternion_Set(quat2, 0.707f, 0.0f, 0.0f, 0.707f); // 90° around X
@@ -92,8 +95,8 @@ int main() {
     printf("  vec after rotation = (%.2f, %.2f, %.2f)\n", 
            v1[0], v1[1], v1[2]);
     
-    // Create and manage materials
-    struct CalCoreMaterial* material = CalCoreMaterial_New();
+    // Create and manage materials - returns void* which we cast to struct CalCoreMaterial*
+    struct CalCoreMaterial* material = (struct CalCoreMaterial*)CalCoreMaterial_New();
     CalCoreModel_AddCoreMaterial(coreModel, material);
     printf("\n✓ Added material to model\n");
     printf("  Total materials: %d\n", CalCoreModel_GetCoreMaterialCount(coreModel));
@@ -111,7 +114,7 @@ int main() {
     printf("\nExample completed successfully!\n");
     
     // Check for errors
-    if (CalError_GetLastErrorCode() != ERROR_CODE_OK) {
+    if (CalError_GetLastErrorCode() != 0) {  // ERROR_CODE_OK = 0
         printf("\nError occurred: %s\n", CalError_GetLastErrorDescription());
         return 1;
     }

@@ -6,6 +6,26 @@ This directory contains a drop-in replacement implementation of the Cal3D animat
 
 The Cal3D wrapper library (`libcal3d.so`) provides all the same API functions as the original Cal3D library but uses ozz-animation for the internal animation playback and skeletal animation processing. This allows applications using Cal3D to benefit from ozz-animation's performance and modern architecture while maintaining API compatibility.
 
+### Important API Change: Opaque Pointers
+
+**Functions that return struct pointers now return `void*` (opaque pointers) instead of typed struct pointers.**
+
+This change was necessary to ensure all functions are properly exported from the DLL on all platforms. The client code is responsible for casting the returned void* to the appropriate struct pointer type.
+
+#### Before (old API):
+```c
+struct CalCoreModel* model = CalCoreModel_New("MyModel");
+struct CalVector* vector = CalVector_New();
+```
+
+#### After (current API):
+```c
+struct CalCoreModel* model = (struct CalCoreModel*)CalCoreModel_New("MyModel");
+struct CalVector* vector = (struct CalVector*)CalVector_New();
+```
+
+This is a minor change that requires adding explicit casts in client code, but it ensures compatibility across all platforms and compilers. The underlying functionality remains unchanged. About 74 functions that return struct pointers are affected (e.g., all `*_New()` functions and `*_Get*()` functions that return pointers).
+
 ## Structure
 
 ```
@@ -54,23 +74,25 @@ This produces `libcal3d.so` (or `libcal3d.dylib` on macOS, `cal3d.dll` on Window
 
 ## DLL Export Notes
 
-The header file `cal3d_wrapper.h` uses platform-specific macros to ensure all functions are correctly exported:
+All functions are exported using the standard `CAL3D_WRAPPER_API` macro which expands to:
+- **Windows MSVC**: `__declspec(dllexport)` or `__declspec(dllimport)`
+- **Linux/GCC**: `__attribute__((visibility("default")))`
 
-- **Windows MSVC**: For functions returning struct pointers, `__declspec(dllexport)` is placed in the "calling convention position" (between the return type and function name) to avoid ambiguity. For example:
-  ```c
-  struct CalCoreAnimation * __declspec(dllexport) CalAnimation_GetCoreAnimation(...);
-  ```
+### Opaque Pointer Returns
 
-- **Linux/GCC**: Uses `__attribute__((visibility("default")))` at the beginning of function declarations:
-  ```c
-  __attribute__((visibility("default"))) struct CalCoreAnimation * CalAnimation_GetCoreAnimation(...);
-  ```
+Functions that return struct pointers now return `void*` instead. This simplified approach:
+- Eliminates platform-specific macro complexities for struct pointer returns
+- Ensures all 405+ functions are properly exported on all platforms
+- Requires client code to cast the returned `void*` to the appropriate struct type
 
-This is implemented using two helper macros:
-- `CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX`: Used before the return type
-- `CAL3D_WRAPPER_API_STRUCT_PTR`: Used after the return type (in calling convention position)
+Example:
+```c
+// API declaration (returns void*)
+CAL3D_WRAPPER_API void* CalCoreModel_New(const char* name);
 
-On MSVC, only the middle position macro is used for the 72 functions that return struct pointers. On GCC, only the prefix macro is used. All other functions (330+) use the standard `CAL3D_WRAPPER_API` macro at the beginning. This ensures maximum compatibility and proper export of all API functions.
+// Client usage (cast to struct pointer)
+struct CalCoreModel* model = (struct CalCoreModel*)CalCoreModel_New("MyModel");
+```
 
 ## Implementation Status
 
