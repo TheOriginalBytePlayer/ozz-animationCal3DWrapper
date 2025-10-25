@@ -1,0 +1,223 @@
+Build started at 10:22 PM...
+1>------ Build started: Project: ZERO_CHECK, Configuration: Debug x64 ------
+1>1>Checking Build System
+2>------ Build started: Project: cal3d_wrapper, Configuration: Debug x64 ------
+2>cal3d_wrapper_impl.cpp
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(124,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalAnimationType' when no variable is declared
+2>(compiling source file '../src/cal3d_wrapper_impl.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(132,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalAnimationState' when no variable is declared
+2>(compiling source file '../src/cal3d_wrapper_impl.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(359,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalErrorCode' when no variable is declared
+2>(compiling source file '../src/cal3d_wrapper_impl.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\cal3d_wrapper_impl.cpp(33,31): error C2556: 'const char *CalError_GetLastErrorDescription(void)': overloaded function differs only by return type from 'char *CalError_GetLastErrorDescription(void)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(383,27):
+2>    see declaration of 'CalError_GetLastErrorDescription'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\cal3d_wrapper_impl.cpp(33,31): error C2373: 'CalError_GetLastErrorDescription': redefinition; different type modifiers
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(383,27):
+2>    see declaration of 'CalError_GetLastErrorDescription'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\cal3d_wrapper_impl.cpp(37,31): error C2556: 'const char *CalError_GetLastErrorFile(void)': overloaded function differs only by return type from 'char *CalError_GetLastErrorFile(void)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(384,27):
+2>    see declaration of 'CalError_GetLastErrorFile'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\cal3d_wrapper_impl.cpp(37,31): error C2373: 'CalError_GetLastErrorFile': redefinition; different type modifiers
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(384,27):
+2>    see declaration of 'CalError_GetLastErrorFile'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\cal3d_wrapper_impl.cpp(45,31): error C2556: 'const char *CalError_GetLastErrorText(void)': overloaded function differs only by return type from 'char *CalError_GetLastErrorText(void)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(386,27):
+2>    see declaration of 'CalError_GetLastErrorText'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\cal3d_wrapper_impl.cpp(45,31): error C2373: 'CalError_GetLastErrorText': redefinition; different type modifiers
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(386,27):
+2>    see declaration of 'CalError_GetLastErrorText'
+2>core_model.cpp
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(124,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalAnimationType' when no variable is declared
+2>(compiling source file '../src/core_model.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(132,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalAnimationState' when no variable is declared
+2>(compiling source file '../src/core_model.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(359,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalErrorCode' when no variable is declared
+2>(compiling source file '../src/core_model.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(182,16): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(182,16):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(186,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(186,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(199,35): error C2556: 'CalBoolean CalCoreModel_CreateCoreMaterialThread(CalCoreModel *,int)': overloaded function differs only by return type from 'Boolean CalCoreModel_CreateCoreMaterialThread(CalCoreModel *,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(285,34):
+2>    see declaration of 'CalCoreModel_CreateCoreMaterialThread'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(199,35): error C2371: 'CalCoreModel_CreateCoreMaterialThread': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(285,34):
+2>    see declaration of 'CalCoreModel_CreateCoreMaterialThread'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(207,35): error C2556: 'CalBoolean CalCoreModel_SetCoreMaterialId(CalCoreModel *,int,int,int)': overloaded function differs only by return type from 'Boolean CalCoreModel_SetCoreMaterialId(CalCoreModel *,int,int,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(306,34):
+2>    see declaration of 'CalCoreModel_SetCoreMaterialId'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(207,35): error C2371: 'CalCoreModel_SetCoreMaterialId': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(306,34):
+2>    see declaration of 'CalCoreModel_SetCoreMaterialId'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(310,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(310,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(330,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(330,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(335,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(335,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(340,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(340,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(345,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(345,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(350,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\core_model.cpp(350,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>all_stubs.cpp
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(124,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalAnimationType' when no variable is declared
+2>(compiling source file '../src/all_stubs.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(132,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalAnimationState' when no variable is declared
+2>(compiling source file '../src/all_stubs.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(359,26): warning C4091: '__declspec(dllexport)': ignored on left of 'CalErrorCode' when no variable is declared
+2>(compiling source file '../src/all_stubs.cpp')
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(37,35): error C2556: 'CalBoolean CalAnimationAction_Execute(CalAnimationAction *,float,float)': overloaded function differs only by return type from 'Boolean CalAnimationAction_Execute(CalAnimationAction *,float,float)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(154,34):
+2>    see declaration of 'CalAnimationAction_Execute'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(37,35): error C2371: 'CalAnimationAction_Execute': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(154,34):
+2>    see declaration of 'CalAnimationAction_Execute'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(41,35): error C2556: 'CalBoolean CalAnimationAction_Update(CalAnimationAction *,float)': overloaded function differs only by return type from 'Boolean CalAnimationAction_Update(CalAnimationAction *,float)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(156,34):
+2>    see declaration of 'CalAnimationAction_Update'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(41,35): error C2371: 'CalAnimationAction_Update': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(156,34):
+2>    see declaration of 'CalAnimationAction_Update'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(45,35): error C2556: 'CalBoolean CalAnimationCycle_Blend(CalAnimationCycle *,float,float)': overloaded function differs only by return type from 'Boolean CalAnimationCycle_Blend(CalAnimationCycle *,float,float)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(163,34):
+2>    see declaration of 'CalAnimationCycle_Blend'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(45,35): error C2371: 'CalAnimationCycle_Blend': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(163,34):
+2>    see declaration of 'CalAnimationCycle_Blend'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(57,35): error C2556: 'CalBoolean CalAnimationCycle_Update(CalAnimationCycle *,float)': overloaded function differs only by return type from 'Boolean CalAnimationCycle_Update(CalAnimationCycle *,float)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(167,34):
+2>    see declaration of 'CalAnimationCycle_Update'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(57,35): error C2371: 'CalAnimationCycle_Update': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(167,34):
+2>    see declaration of 'CalAnimationCycle_Update'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(129,35): error C2556: 'CalBoolean CalCoreMorphAnimation_AddMorphTarget(CalCoreMorphAnimation *,int,int)': overloaded function differs only by return type from 'Boolean CalCoreMorphAnimation_AddMorphTarget(CalCoreMorphAnimation *,int,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(210,34):
+2>    see declaration of 'CalCoreMorphAnimation_AddMorphTarget'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(129,35): error C2371: 'CalCoreMorphAnimation_AddMorphTarget': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(210,34):
+2>    see declaration of 'CalCoreMorphAnimation_AddMorphTarget'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(153,35): error C2556: 'CalBoolean CalCoreBone_AddChildId(CalCoreBone *,int)': overloaded function differs only by return type from 'Boolean CalCoreBone_AddChildId(CalCoreBone *,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(216,34):
+2>    see declaration of 'CalCoreBone_AddChildId'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(153,35): error C2371: 'CalCoreBone_AddChildId': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(216,34):
+2>    see declaration of 'CalCoreBone_AddChildId'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(245,35): error C2556: 'CalBoolean CalCoreMaterial_Reserve(CalCoreMaterial *,int)': overloaded function differs only by return type from 'Boolean CalCoreMaterial_Reserve(CalCoreMaterial *,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(254,34):
+2>    see declaration of 'CalCoreMaterial_Reserve'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(245,35): error C2371: 'CalCoreMaterial_Reserve': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(254,34):
+2>    see declaration of 'CalCoreMaterial_Reserve'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(249,35): error C2556: 'CalBoolean CalCoreMaterial_SetMapUserData(CalCoreMaterial *,int,CalUserData)': overloaded function differs only by return type from 'Boolean CalCoreMaterial_SetMapUserData(CalCoreMaterial *,int,CalUserData)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(258,34):
+2>    see declaration of 'CalCoreMaterial_SetMapUserData'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(249,35): error C2371: 'CalCoreMaterial_SetMapUserData': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(258,34):
+2>    see declaration of 'CalCoreMaterial_SetMapUserData'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(350,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(350,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(426,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(426,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(433,35): error C2556: 'CalBoolean CalCoreSubmesh_Reserve(CalCoreSubmesh *,int,int,int,int)': overloaded function differs only by return type from 'Boolean CalCoreSubmesh_Reserve(CalCoreSubmesh *,int,int,int,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(344,34):
+2>    see declaration of 'CalCoreSubmesh_Reserve'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(433,35): error C2371: 'CalCoreSubmesh_Reserve': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(344,34):
+2>    see declaration of 'CalCoreSubmesh_Reserve'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(449,35): error C2556: 'CalBoolean CalCoreSubmesh_IsTangentsEnabled(CalCoreSubmesh *,int)': overloaded function differs only by return type from 'Boolean CalCoreSubmesh_IsTangentsEnabled(CalCoreSubmesh *,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(352,33):
+2>    see declaration of 'CalCoreSubmesh_IsTangentsEnabled'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(449,35): error C2371: 'CalCoreSubmesh_IsTangentsEnabled': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(352,33):
+2>    see declaration of 'CalCoreSubmesh_IsTangentsEnabled'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(454,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(454,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(505,35): error C2556: 'CalBoolean CalMixer_BlendCycle(CalMixer *,int,float,float)': overloaded function differs only by return type from 'Boolean CalMixer_BlendCycle(CalMixer *,int,float,float)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(419,34):
+2>    see declaration of 'CalMixer_BlendCycle'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(505,35): error C2371: 'CalMixer_BlendCycle': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(419,34):
+2>    see declaration of 'CalMixer_BlendCycle'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(509,35): error C2556: 'CalBoolean CalMixer_ClearCycle(CalMixer *,int,float)': overloaded function differs only by return type from 'Boolean CalMixer_ClearCycle(CalMixer *,int,float)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(420,34):
+2>    see declaration of 'CalMixer_ClearCycle'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(509,35): error C2371: 'CalMixer_ClearCycle': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(420,34):
+2>    see declaration of 'CalMixer_ClearCycle'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(518,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(518,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(533,35): error C2556: 'CalBoolean CalMorphTargetMixer_Clear(CalMorphTargetMixer *,int,float)': overloaded function differs only by return type from 'Boolean CalMorphTargetMixer_Clear(CalMorphTargetMixer *,int,float)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(433,34):
+2>    see declaration of 'CalMorphTargetMixer_Clear'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(533,35): error C2371: 'CalMorphTargetMixer_Clear': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(433,34):
+2>    see declaration of 'CalMorphTargetMixer_Clear'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(557,35): error C2556: 'CalBoolean CalModel_AttachMesh(CalModel *,int)': overloaded function differs only by return type from 'Boolean CalModel_AttachMesh(CalModel *,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(443,34):
+2>    see declaration of 'CalModel_AttachMesh'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(557,35): error C2371: 'CalModel_AttachMesh': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(443,34):
+2>    see declaration of 'CalModel_AttachMesh'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(565,35): error C2556: 'CalBoolean CalModel_DetachMesh(CalModel *,int)': overloaded function differs only by return type from 'Boolean CalModel_DetachMesh(CalModel *,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(445,34):
+2>    see declaration of 'CalModel_DetachMesh'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(565,35): error C2371: 'CalModel_DetachMesh': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(445,34):
+2>    see declaration of 'CalModel_DetachMesh'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(629,35): error C2556: 'CalBoolean CalRenderer_BeginRendering(CalRenderer *)': overloaded function differs only by return type from 'Boolean CalRenderer_BeginRendering(CalRenderer *)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(499,34):
+2>    see declaration of 'CalRenderer_BeginRendering'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(629,35): error C2371: 'CalRenderer_BeginRendering': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(499,34):
+2>    see declaration of 'CalRenderer_BeginRendering'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(709,35): error C2556: 'CalBoolean CalRenderer_IsTangentsEnabled(CalRenderer *,int)': overloaded function differs only by return type from 'Boolean CalRenderer_IsTangentsEnabled(CalRenderer *,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(519,35):
+2>    see declaration of 'CalRenderer_IsTangentsEnabled'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(709,35): error C2371: 'CalRenderer_IsTangentsEnabled': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(519,35):
+2>    see declaration of 'CalRenderer_IsTangentsEnabled'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(713,35): error C2556: 'CalBoolean CalRenderer_SelectMeshSubmesh(CalRenderer *,int,int)': overloaded function differs only by return type from 'Boolean CalRenderer_SelectMeshSubmesh(CalRenderer *,int,int)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(521,34):
+2>    see declaration of 'CalRenderer_SelectMeshSubmesh'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(713,35): error C2371: 'CalRenderer_SelectMeshSubmesh': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(521,34):
+2>    see declaration of 'CalRenderer_SelectMeshSubmesh'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(722,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(722,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(726,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(726,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(730,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(730,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(734,12): error C2440: 'return': cannot convert from 'Boolean' to 'CalBoolean'
+2>    D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(734,12):
+2>    Conversion to enumeration type requires an explicit cast (static_cast, C-style cast or parenthesized function-style cast)
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(845,35): error C2556: 'CalBoolean CalSubmesh_HasInternalData(CalSubmesh *)': overloaded function differs only by return type from 'Boolean CalSubmesh_HasInternalData(CalSubmesh *)'
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(577,34):
+2>    see declaration of 'CalSubmesh_HasInternalData'
+2>D:\repos\ozz-animationCal3DWrapper\wrapper\src\all_stubs.cpp(845,35): error C2371: 'CalSubmesh_HasInternalData': redefinition; different basic types
+2>    D:\repos\ozz-animationCal3DWrapper\cal3d-src\src\cal3d\cal3d_wrapper.h(577,34):
+2>    see declaration of 'CalSubmesh_HasInternalData'
+2>Generating Code...
+2>Done building project "cal3d_wrapper.vcxproj" -- FAILED.
+3>------ Build started: Project: ALL_BUILD, Configuration: Debug x64 ------
+3>1>Building Custom Rule D:/repos/ozz-animationCal3DWrapper/wrapper/CMakeLists.txt
+========== Build: 2 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+========== Build completed at 10:22 PM and took 12.616 seconds ==========

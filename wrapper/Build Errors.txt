@@ -1,0 +1,92 @@
+'CalBoolean CalAnimationCycle_Update(CalAnimationCycle *,float)': overloaded function differs only by return type from 'Boolean CalAnimationCycle_Update(CalAnimationCycle *,float)'
+'CalAnimationAction_Execute': redefinition; different basic types
+'CalAnimationAction_Update': redefinition; different basic types
+'CalAnimationCycle_Blend': redefinition; different basic types
+'CalAnimationCycle_Update': redefinition; different basic types
+'CalBoolean CalAnimationAction_Execute(CalAnimationAction *,float,float)': overloaded function differs only by return type from 'Boolean CalAnimationAction_Execute(CalAnimationAction *,float,float)'
+'CalBoolean CalAnimationAction_Update(CalAnimationAction *,float)': overloaded function differs only by return type from 'Boolean CalAnimationAction_Update(CalAnimationAction *,float)'
+'CalBoolean CalAnimationCycle_Blend(CalAnimationCycle *,float,float)': overloaded function differs only by return type from 'Boolean CalAnimationCycle_Blend(CalAnimationCycle *,float,float)'
+'CalBoolean CalCoreBone_AddChildId(CalCoreBone *,int)': overloaded function differs only by return type from 'Boolean CalCoreBone_AddChildId(CalCoreBone *,int)'
+'CalBoolean CalCoreMaterial_Reserve(CalCoreMaterial *,int)': overloaded function differs only by return type from 'Boolean CalCoreMaterial_Reserve(CalCoreMaterial *,int)'
+'CalBoolean CalCoreMaterial_SetMapUserData(CalCoreMaterial *,int,CalUserData)': overloaded function differs only by return type from 'Boolean CalCoreMaterial_SetMapUserData(CalCoreMaterial *,int,CalUserData)'
+'CalBoolean CalCoreModel_CreateCoreMaterialThread(CalCoreModel *,int)': overloaded function differs only by return type from 'Boolean CalCoreModel_CreateCoreMaterialThread(CalCoreModel *,int)'
+'CalBoolean CalCoreModel_SetCoreMaterialId(CalCoreModel *,int,int,int)': overloaded function differs only by return type from 'Boolean CalCoreModel_SetCoreMaterialId(CalCoreModel *,int,int,int)'
+'CalBoolean CalCoreMorphAnimation_AddMorphTarget(CalCoreMorphAnimation *,int,int)': overloaded function differs only by return type from 'Boolean CalCoreMorphAnimation_AddMorphTarget(CalCoreMorphAnimation *,int,int)'
+'CalBoolean CalCoreSubmesh_IsTangentsEnabled(CalCoreSubmesh *,int)': overloaded function differs only by return type from 'Boolean CalCoreSubmesh_IsTangentsEnabled(CalCoreSubmesh *,int)'
+'CalBoolean CalCoreSubmesh_Reserve(CalCoreSubmesh *,int,int,int,int)': overloaded function differs only by return type from 'Boolean CalCoreSubmesh_Reserve(CalCoreSubmesh *,int,int,int,int)'
+'CalBoolean CalMixer_BlendCycle(CalMixer *,int,float,float)': overloaded function differs only by return type from 'Boolean CalMixer_BlendCycle(CalMixer *,int,float,float)'
+'CalBoolean CalMixer_ClearCycle(CalMixer *,int,float)': overloaded function differs only by return type from 'Boolean CalMixer_ClearCycle(CalMixer *,int,float)'
+'CalBoolean CalModel_AttachMesh(CalModel *,int)': overloaded function differs only by return type from 'Boolean CalModel_AttachMesh(CalModel *,int)'
+'CalBoolean CalModel_DetachMesh(CalModel *,int)': overloaded function differs only by return type from 'Boolean CalModel_DetachMesh(CalModel *,int)'
+'CalBoolean CalMorphTargetMixer_Clear(CalMorphTargetMixer *,int,float)': overloaded function differs only by return type from 'Boolean CalMorphTargetMixer_Clear(CalMorphTargetMixer *,int,float)'
+'CalBoolean CalRenderer_BeginRendering(CalRenderer *)': overloaded function differs only by return type from 'Boolean CalRenderer_BeginRendering(CalRenderer *)'
+'CalBoolean CalRenderer_IsTangentsEnabled(CalRenderer *,int)': overloaded function differs only by return type from 'Boolean CalRenderer_IsTangentsEnabled(CalRenderer *,int)'
+'CalBoolean CalRenderer_SelectMeshSubmesh(CalRenderer *,int,int)': overloaded function differs only by return type from 'Boolean CalRenderer_SelectMeshSubmesh(CalRenderer *,int,int)'
+'CalBoolean CalSubmesh_HasInternalData(CalSubmesh *)': overloaded function differs only by return type from 'Boolean CalSubmesh_HasInternalData(CalSubmesh *)'
+'CalCoreBone_AddChildId': redefinition; different basic types
+'CalCoreMaterial_Reserve': redefinition; different basic types
+'CalCoreMaterial_SetMapUserData': redefinition; different basic types
+'CalCoreModel_CreateCoreMaterialThread': redefinition; different basic types
+'CalCoreModel_SetCoreMaterialId': redefinition; different basic types
+'CalCoreMorphAnimation_AddMorphTarget': redefinition; different basic types
+'CalCoreSubmesh_IsTangentsEnabled': redefinition; different basic types
+'CalCoreSubmesh_Reserve': redefinition; different basic types
+'CalError_GetLastErrorDescription': redefinition; different type modifiers
+'CalError_GetLastErrorFile': redefinition; different type modifiers
+'CalError_GetLastErrorText': redefinition; different type modifiers
+'CalMixer_BlendCycle': redefinition; different basic types
+'CalMixer_ClearCycle': redefinition; different basic types
+'CalModel_AttachMesh': redefinition; different basic types
+'CalModel_DetachMesh': redefinition; different basic types
+'CalMorphTargetMixer_Clear': redefinition; different basic types
+'CalRenderer_BeginRendering': redefinition; different basic types
+'CalRenderer_IsTangentsEnabled': redefinition; different basic types
+'CalRenderer_SelectMeshSubmesh': redefinition; different basic types
+'CalSubmesh_HasInternalData': redefinition; different basic types
+'const char *CalError_GetLastErrorDescription(void)': overloaded function differs only by return type from 'char *CalError_GetLastErrorDescription(void)'
+'const char *CalError_GetLastErrorFile(void)': overloaded function differs only by return type from 'char *CalError_GetLastErrorFile(void)'
+'const char *CalError_GetLastErrorText(void)': overloaded function differs only by return type from 'char *CalError_GetLastErrorText(void)'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'return': cannot convert from 'Boolean' to 'CalBoolean'
+'__declspec(dllexport)': ignored on left of 'CalAnimationState' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalAnimationState' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalAnimationState' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalAnimationType' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalAnimationType' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalAnimationType' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalErrorCode' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalErrorCode' when no variable is declared
+'__declspec(dllexport)': ignored on left of 'CalErrorCode' when no variable is declared
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
+cannot overload functions distinguished by return type alone
