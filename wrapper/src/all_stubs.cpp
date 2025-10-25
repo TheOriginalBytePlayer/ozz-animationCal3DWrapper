@@ -631,6 +631,10 @@ CAL3D_WRAPPER_API void CalCoreSubmesh_SetLodCount(struct CalCoreSubmesh *self, i
     // TODO: Implement
 }
 
+CAL3D_WRAPPER_API void CalCoreSubmesh_SetFace( struct CalCoreSubmesh *self, int faceId, int vertID1, int vertID2, int vertID3 ) {
+    // TODO: Implement
+}
+
 CAL3D_WRAPPER_API enum CalBoolean CalCoreSubmesh_IsTangentsEnabled(struct CalCoreSubmesh *self, int mapId) {
     return False;
 }
