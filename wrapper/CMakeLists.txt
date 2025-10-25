@@ -34,6 +34,14 @@ add_library(cal3d_wrapper SHARED ${WRAPPER_SOURCES} ${WRAPPER_HEADERS})
 # Define CAL3D_WRAPPER_EXPORTS for the library build only
 target_compile_definitions(cal3d_wrapper PRIVATE CAL3D_WRAPPER_EXPORTS)
 
+# Disable specific warnings for stub implementations on MSVC
+if(MSVC)
+    target_compile_options(cal3d_wrapper PRIVATE
+        /wd4100  # unreferenced formal parameter
+        /wd4267  # conversion from size_t to int, possible loss of data
+    )
+endif()
+
 # Link with ozz libraries
 target_link_libraries(cal3d_wrapper
     ozz_animation
