@@ -2,3 +2,8 @@ build/
 build-cc/
 build-wrapper/
 .DS_Store
+/.vs
+wrapper/Build wrapper.bat
+wrapper/Build wrapper.bat
+wrapper/Build wrapper.bat
+wrapper/Build wrapper.bat
