@@ -70,7 +70,7 @@ This is implemented using two helper macros:
 - `CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX`: Used before the return type
 - `CAL3D_WRAPPER_API_STRUCT_PTR`: Used after the return type (in calling convention position)
 
-On MSVC, only the middle position macro is used. On GCC, only the prefix macro is used. This ensures maximum compatibility and proper export of all 410+ API functions.
+On MSVC, only the middle position macro is used for the 72 functions that return struct pointers. On GCC, only the prefix macro is used. All other functions (330+) use the standard `CAL3D_WRAPPER_API` macro at the beginning. This ensures maximum compatibility and proper export of all API functions.
 
 ## Implementation Status
 
