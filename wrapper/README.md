@@ -24,11 +24,23 @@ wrapper/
 
 The wrapper is built as part of the main ozz-animation project:
 
+### Linux/macOS
+
 ```bash
 mkdir build && cd build
-cmake .. -DBUILD_SHARED_LIBS=ON -Dozz_build_samples=OFF -Dozz_build_howtos=OFF -Dozz_build_tests=OFF
+cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -Dozz_build_samples=OFF -Dozz_build_howtos=OFF -Dozz_build_tests=OFF
 make cal3d_wrapper
 ```
+
+### Windows (Visual Studio)
+
+```bash
+mkdir build && cd build
+cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -Dozz_build_samples=OFF -Dozz_build_howtos=OFF -Dozz_build_tests=OFF
+cmake --build . --target cal3d_wrapper --config Release
+```
+
+**Note**: The `-DCMAKE_POSITION_INDEPENDENT_CODE=ON` flag is required for building the shared library.
 
 This produces `libcal3d.so` (or `libcal3d.dylib` on macOS, `cal3d.dll` on Windows).
 
