@@ -161,6 +161,12 @@ CAL3D_WRAPPER_API void CalBone_SetCoreStateRecursive(struct CalBone *self) {
     // TODO: Implement
 }
 
+CAL3D_WRAPPER_API enum CalBoolean CalBone_GetBoundingBox( struct CalBone *self, struct CalCoreModel* model,
+                                                           float* outEightPoints ) {
+    // TODO: Implement
+    return False;
+}
+
 CAL3D_WRAPPER_API void* CalCoreAnimation_New() {
     // TODO: Implement
     return nullptr;
@@ -316,6 +322,12 @@ CAL3D_WRAPPER_API void CalCoreBone_SetTranslationBoneSpace(struct CalCoreBone *s
 
 CAL3D_WRAPPER_API void CalCoreBone_SetUserData(struct CalCoreBone *self, CalUserData userData) {
     // TODO: Implement
+}
+
+CAL3D_WRAPPER_API enum CalBoolean CalCoreBone_GetBoundingBox( struct CalCoreBone *self, struct CalCoreModel* model,
+                                                               float* outEightPoints ) {
+    // TODO: Implement
+    return False;
 }
 
 CAL3D_WRAPPER_API void* CalCoreMaterial_New() {
@@ -540,6 +552,44 @@ CAL3D_WRAPPER_API int CalCoreSubmesh_GetVertexInfluenceCount( struct CalCoreSubm
     return 0;
 }
 
+CAL3D_WRAPPER_API int CalCoreSubmesh_GetVertexInfluence( struct CalCoreSubmesh *self, int vertID, int influenceID,
+                                                          float* outWeight ) {
+    // TODO: Implement
+    return 0;
+}
+
+CAL3D_WRAPPER_API enum CalBoolean CalCoreSubmesh_GetAllInfluences( struct CalCoreSubmesh* inCoreSubmesh,
+                                                                    int inArrayLength,
+                                                                    int* outBoneIDs, float* outWeights ) {
+    // TODO: Implement
+    return False;
+}
+
+CAL3D_WRAPPER_API void CalCoreSubmesh_GetVertexTextureCoordinate( struct CalCoreSubmesh *self, int vertexId, int mapID,
+                                                                   float* outU, float* outV ) {
+    // TODO: Implement
+}
+
+CAL3D_WRAPPER_API void CalCoreSubmesh_SetAllInfluences(
+                                        struct CalCoreSubmesh* ioCoreSubmesh,
+                                        int inArrayLength,
+                                        const int* inBoneIDs,
+                                        const float* inWeights ) {
+    // TODO: Implement
+}
+
+CAL3D_WRAPPER_API void CalCoreSubmesh_SetVertexNormal(
+                                        struct CalCoreSubmesh* ioCoreSubmesh,
+                                        int inVertexId,
+                                        const float* inNormal ) {
+    // TODO: Implement
+}
+
+CAL3D_WRAPPER_API void CalCoreSubmesh_SetVertexTextureCoordinate( struct CalCoreSubmesh *self, int vertexId, int mapID,
+                                                                   float inU, float inV ) {
+    // TODO: Implement
+}
+
 CAL3D_WRAPPER_API void* CalCoreSubmesh_New() {
     // TODO: Implement
     return nullptr;
@@ -610,6 +660,34 @@ CAL3D_WRAPPER_API CalCoreSubMorphTargetDiffMap* CalCoreSubMorphTargetDiffMap_New
 }
 
 CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Delete( CalCoreSubMorphTargetDiffMap* inSelf ) {
+    // TODO: Implement
+}
+
+CAL3D_WRAPPER_API CalCoreSubMorphTargetDiffMap* CalCoreSubMorphTargetDiffMap_Clone(
+    const CalCoreSubMorphTargetDiffMap* inOther ) {
+    // TODO: Implement
+    return nullptr;
+}
+
+CAL3D_WRAPPER_API bool CalCoreSubMorphTargetDiffMap_Reserve( CalCoreSubMorphTargetDiffMap* inSelf,
+    int inNumDifferences ) {
+    // TODO: Implement
+    return false;
+}
+
+CAL3D_WRAPPER_API bool CalCoreSubMorphTargetDiffMap_AppendVertex( CalCoreSubMorphTargetDiffMap* inSelf,
+    int inVertexID, const float* inPositionOffset, const float* inNormalOffset ) {
+    // TODO: Implement
+    return false;
+}
+
+CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTargetDiffMap* inSelf,
+    float inScaleFactor ) {
+    // TODO: Implement
+}
+
+CAL3D_WRAPPER_API void CalCoreSubMorphTarget_GetPositionsAndNormals( CalCoreSubMorphTarget* inSelf,
+                                                                      float* outVertexBuffer ) {
     // TODO: Implement
 }
 
@@ -726,6 +804,18 @@ CAL3D_WRAPPER_API void CalMixer_RemoveAction(struct CalMixer *self,int id) {
 }
 
 CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Clear(struct CalMorphTargetMixer *self, int id, float delay) {
+    return False;
+}
+
+CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Blend( struct CalMorphTargetMixer* self,
+                            int morphAnimID, float weight, float delay ) {
+    // TODO: Implement
+    return False;
+}
+
+CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Copy( struct CalMorphTargetMixer* self,
+                                                            const struct CalMorphTargetMixer* toCopy ) {
+    // TODO: Implement
     return False;
 }
 
@@ -1004,6 +1094,13 @@ CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreSkeleton(struct CalSaver *sel
     return False;
 }
 
+CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreMeshToBuffer( struct CalCoreMesh *pCoreMesh,
+                                                                  void** outBuffer,
+                                                                  int* outByteCount ) {
+    // TODO: Implement
+    return False;
+}
+
 CAL3D_WRAPPER_API void CalSkeleton_CalculateState(struct CalSkeleton *self) {
     // TODO: Implement
 }
@@ -1057,6 +1154,11 @@ CAL3D_WRAPPER_API void CalSkeleton_GetBoneRotations( struct CalSkeleton *self, f
 }
 
 CAL3D_WRAPPER_API void CalSkeleton_SetAllRotationsToCore( struct CalSkeleton *self ) {
+    // TODO: Implement
+}
+
+CAL3D_WRAPPER_API void CalSkeleton_GetAllBonespaceTransforms( struct CalSkeleton *self,
+                                                               float* outTransforms ) {
     // TODO: Implement
 }
 
