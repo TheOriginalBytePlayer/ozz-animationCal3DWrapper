@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -Wl,--dependency-file=CMakeFiles/cal3d_wrapper.dir/link.d -shared -Wl,-soname,libcal3d.so.0 -o libcal3d.so.0.1.0 CMakeFiles/cal3d_wrapper.dir/src/cal3d_wrapper_impl.cpp.o CMakeFiles/cal3d_wrapper.dir/src/core_model.cpp.o CMakeFiles/cal3d_wrapper.dir/src/all_stubs.cpp.o  -lozz_animation -lozz_base -lozz_geometry
