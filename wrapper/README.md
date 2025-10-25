@@ -52,6 +52,26 @@ cmake --build . --target cal3d_wrapper --config Release
 
 This produces `libcal3d.so` (or `libcal3d.dylib` on macOS, `cal3d.dll` on Windows).
 
+## DLL Export Notes
+
+The header file `cal3d_wrapper.h` uses platform-specific macros to ensure all functions are correctly exported:
+
+- **Windows MSVC**: For functions returning struct pointers, `__declspec(dllexport)` is placed in the "calling convention position" (between the return type and function name) to avoid ambiguity. For example:
+  ```c
+  struct CalCoreAnimation * __declspec(dllexport) CalAnimation_GetCoreAnimation(...);
+  ```
+
+- **Linux/GCC**: Uses `__attribute__((visibility("default")))` at the beginning of function declarations:
+  ```c
+  __attribute__((visibility("default"))) struct CalCoreAnimation * CalAnimation_GetCoreAnimation(...);
+  ```
+
+This is implemented using two helper macros:
+- `CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX`: Used before the return type
+- `CAL3D_WRAPPER_API_STRUCT_PTR`: Used after the return type (in calling convention position)
+
+On MSVC, only the middle position macro is used. On GCC, only the prefix macro is used. This ensures maximum compatibility and proper export of all 410+ API functions.
+
 ## Implementation Status
 
 ### Fully Implemented (80+ functions)
