@@ -802,11 +802,11 @@ CAL3D_WRAPPER_API void CalSpringSystem_Update(struct CalSpringSystem *self, floa
     // TODO: Implement
 }
 
-CAL3D_WRAPPER_API struct CalVector* CalSpringSystem_GetGravityVector(struct CalSpringSystem *self) {
+CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector* CAL3D_WRAPPER_API_STRUCT_PTR CalSpringSystem_GetGravityVector(struct CalSpringSystem *self) {
     return nullptr;
 }
 
-CAL3D_WRAPPER_API struct CalVector* CalSpringSystem_GetForceVector(struct CalSpringSystem *self) {
+CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector* CAL3D_WRAPPER_API_STRUCT_PTR CalSpringSystem_GetForceVector(struct CalSpringSystem *self) {
     return nullptr;
 }
 

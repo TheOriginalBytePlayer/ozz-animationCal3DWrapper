@@ -74,6 +74,20 @@ typedef int CalIndex;
 
 #endif 
 
+// Helper macro for function return types that are struct pointers
+// On Windows MSVC, __declspec should be placed between return type and function name (calling convention position)
+// to avoid any ambiguity with the struct type itself. In this case, we don't use the prefix.
+// On GCC/Clang, keep __attribute__ at the beginning with the prefix CAL3D_WRAPPER_API.
+#if defined(_WIN32) && !defined(__MINGW32__)
+	// On MSVC, define separate macros for prefix (empty for struct*) and middle position (has __declspec)
+	#define CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX
+	#define CAL3D_WRAPPER_API_STRUCT_PTR CAL3D_WRAPPER_API
+#else
+	// On GCC, use the attribute at the beginning, and nothing in the middle
+	#define CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX CAL3D_WRAPPER_API
+	#define CAL3D_WRAPPER_API_STRUCT_PTR
+#endif
+
 //****************************************************************************//
 // Forward declarations                                                       //
 //****************************************************************************//
@@ -168,7 +182,7 @@ extern "C"
   };
 
   CAL3D_WRAPPER_API void CalAnimation_Delete(struct CalAnimation *self);
-  CAL3D_WRAPPER_API struct CalCoreAnimation *CalAnimation_GetCoreAnimation(struct CalAnimation *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreAnimation *CAL3D_WRAPPER_API_STRUCT_PTR CalAnimation_GetCoreAnimation(struct CalAnimation *self);
   CAL3D_WRAPPER_API enum CalAnimationState CalAnimation_GetState(struct CalAnimation *self);
   CAL3D_WRAPPER_API float CalAnimation_GetTime(struct CalAnimation *self);
   CAL3D_WRAPPER_API enum CalAnimationType CalAnimation_GetType(struct CalAnimation *self);
@@ -180,7 +194,7 @@ extern "C"
 
   CAL3D_WRAPPER_API void CalAnimationAction_Delete(struct CalAnimationAction *self);
   CAL3D_WRAPPER_API enum CalBoolean CalAnimationAction_Execute(struct CalAnimationAction *self, float delayIn, float delayOut);
-  CAL3D_WRAPPER_API struct CalAnimationAction *CalAnimationAction_New(struct CalCoreAnimation *pCoreAnimation);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalAnimationAction *CAL3D_WRAPPER_API_STRUCT_PTR CalAnimationAction_New(struct CalCoreAnimation *pCoreAnimation);
   CAL3D_WRAPPER_API enum CalBoolean CalAnimationAction_Update(struct CalAnimationAction *self, float deltaTime);
  
 //****************************************************************************//
@@ -189,7 +203,7 @@ extern "C"
 
   CAL3D_WRAPPER_API enum CalBoolean CalAnimationCycle_Blend(struct CalAnimationCycle *self, float weight, float delay);
   CAL3D_WRAPPER_API void CalAnimationCycle_Delete(struct CalAnimationCycle *self);
-  CAL3D_WRAPPER_API struct CalAnimationCycle *CalAnimationCycle_New(struct CalCoreAnimation *pCoreAnimation);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalAnimationCycle *CAL3D_WRAPPER_API_STRUCT_PTR CalAnimationCycle_New(struct CalCoreAnimation *pCoreAnimation);
   CAL3D_WRAPPER_API void CalAnimationCycle_SetAsync(struct CalAnimationCycle *self, float time, float duration);
   CAL3D_WRAPPER_API enum CalBoolean CalAnimationCycle_Update(struct CalAnimationCycle *self, float deltaTime);
 
@@ -202,15 +216,15 @@ extern "C"
   CAL3D_WRAPPER_API void CalBone_ClearState(struct CalBone *self);
   CAL3D_WRAPPER_API void CalBone_Delete(struct CalBone *self);
   CAL3D_WRAPPER_API int CalBone_GetID( struct CalBone *self );
-  CAL3D_WRAPPER_API struct CalCoreBone *CalBone_GetCoreBone(struct CalBone *self);
-  CAL3D_WRAPPER_API struct CalQuaternion *CalBone_GetRotation(struct CalBone *self);
-  CAL3D_WRAPPER_API struct CalQuaternion *CalBone_GetRotationAbsolute(struct CalBone *self);
-  CAL3D_WRAPPER_API struct CalQuaternion *CalBone_GetRotationBoneSpace(struct CalBone *self);
-  CAL3D_WRAPPER_API struct CalVector *CalBone_GetTranslation(struct CalBone *self);
-  CAL3D_WRAPPER_API struct CalVector *CalBone_GetTranslationAbsolute(struct CalBone *self);
-  CAL3D_WRAPPER_API struct CalVector *CalBone_GetTranslationBoneSpace(struct CalBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreBone *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_GetCoreBone(struct CalBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_GetRotation(struct CalBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_GetRotationAbsolute(struct CalBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_GetRotationBoneSpace(struct CalBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_GetTranslation(struct CalBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_GetTranslationAbsolute(struct CalBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_GetTranslationBoneSpace(struct CalBone *self);
   CAL3D_WRAPPER_API void CalBone_LockState(struct CalBone *self);
-  CAL3D_WRAPPER_API struct CalBone *CalBone_New(struct CalCoreBone* coreBone);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalBone *CAL3D_WRAPPER_API_STRUCT_PTR CalBone_New(struct CalCoreBone* coreBone);
   CAL3D_WRAPPER_API void CalBone_SetSkeleton(struct CalBone *self, struct CalSkeleton *pSkeleton);
   CAL3D_WRAPPER_API void CalBone_SetTranslation(struct CalBone *self, struct CalVector *pTranslation);
   CAL3D_WRAPPER_API void CalBone_SetRotation(struct CalBone *self, struct CalQuaternion *pRotation);
@@ -225,7 +239,7 @@ extern "C"
 // CalCoreAnimation wrapper functions declaration                             //
 //****************************************************************************//
 
-  CAL3D_WRAPPER_API struct CalCoreAnimation *CalCoreAnimation_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreAnimation *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreAnimation_New();
   CAL3D_WRAPPER_API void CalCoreAnimation_Delete(struct CalCoreAnimation* self);
 
   CAL3D_WRAPPER_API float CalCoreAnimation_GetDuration(struct CalCoreAnimation *self);
@@ -236,7 +250,7 @@ extern "C"
 // CalCoreMorphAnimation wrapper functions declaration                             //
 //****************************************************************************//
 
-  CAL3D_WRAPPER_API struct CalCoreMorphAnimation *CalCoreMorphAnimation_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMorphAnimation *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreMorphAnimation_New();
   CAL3D_WRAPPER_API void CalCoreMorphAnimation_Delete(struct CalCoreMorphAnimation* self);
   CAL3D_WRAPPER_API enum CalBoolean CalCoreMorphAnimation_AddMorphTarget(struct CalCoreMorphAnimation* self, int meshID, int morphID);
   CAL3D_WRAPPER_API const char* CalCoreMorphAnimation_GetName( const struct CalCoreMorphAnimation *self );
@@ -259,14 +273,14 @@ extern "C"
   CAL3D_WRAPPER_API void CalCoreBone_SetName(struct CalCoreBone *self, const char* name );
   CAL3D_WRAPPER_API int CalCoreBone_GetParentId(struct CalCoreBone *self);
   CAL3D_WRAPPER_API int CalCoreBone_GetID( struct CalCoreBone *self );
-  CAL3D_WRAPPER_API struct CalQuaternion *CalCoreBone_GetRotation(struct CalCoreBone *self);
-  CAL3D_WRAPPER_API struct CalQuaternion *CalCoreBone_GetRotationAbsolute(struct CalCoreBone *self);
-  CAL3D_WRAPPER_API struct CalQuaternion *CalCoreBone_GetRotationBoneSpace(struct CalCoreBone *self);
-  CAL3D_WRAPPER_API struct CalVector *CalCoreBone_GetTranslation(struct CalCoreBone *self);
-  CAL3D_WRAPPER_API struct CalVector *CalCoreBone_GetTranslationAbsolute(struct CalCoreBone *self);
-  CAL3D_WRAPPER_API struct CalVector *CalCoreBone_GetTranslationBoneSpace(struct CalCoreBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreBone_GetRotation(struct CalCoreBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreBone_GetRotationAbsolute(struct CalCoreBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreBone_GetRotationBoneSpace(struct CalCoreBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreBone_GetTranslation(struct CalCoreBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreBone_GetTranslationAbsolute(struct CalCoreBone *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreBone_GetTranslationBoneSpace(struct CalCoreBone *self);
   CAL3D_WRAPPER_API CalUserData CalCoreBone_GetUserData(struct CalCoreBone *self);
-  CAL3D_WRAPPER_API struct CalCoreBone *CalCoreBone_New(const char* name);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreBone *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreBone_New(const char* name);
   CAL3D_WRAPPER_API void CalCoreBone_SetCoreSkeleton(struct CalCoreBone *self, struct CalCoreSkeleton *pCoreSkeleton);
   CAL3D_WRAPPER_API void CalCoreBone_SetParentId(struct CalCoreBone *self, int parentId);
   CAL3D_WRAPPER_API void CalCoreBone_SetRotation(struct CalCoreBone *self, struct CalQuaternion *pRotation);
@@ -280,7 +294,7 @@ extern "C"
 // CalCoreMaterial wrapper functions declaration                              //
 //****************************************************************************//
 
-  CAL3D_WRAPPER_API struct CalCoreMaterial *CalCoreMaterial_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMaterial *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreMaterial_New();
   CAL3D_WRAPPER_API void CalCoreMaterial_Delete(struct CalCoreMaterial *self);
 
 //  CAL3D_WRAPPER_API CalCoreMaterial::Color *CalCoreMaterial_GetAmbientColor(struct CalCoreMaterial *self);
@@ -318,12 +332,12 @@ extern "C"
 // CalCoreMesh wrapper functions declaration                                  //
 //****************************************************************************//
 
-  CAL3D_WRAPPER_API struct CalCoreMesh *CalCoreMesh_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreMesh_New();
   CAL3D_WRAPPER_API void CalCoreMesh_Delete(struct CalCoreMesh *self);
 
   CAL3D_WRAPPER_API int CalCoreMesh_AddCoreSubmesh(struct CalCoreMesh *self, struct CalCoreSubmesh *pCoreSubmesh);
   CAL3D_WRAPPER_API void CalCoreMesh_RemoveCoreSubmesh( struct CalCoreMesh *self, int coreSubmeshID );
-  CAL3D_WRAPPER_API struct CalCoreSubmesh *CalCoreMesh_GetCoreSubmesh(struct CalCoreMesh *self, int id);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSubmesh *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreMesh_GetCoreSubmesh(struct CalCoreMesh *self, int id);
   CAL3D_WRAPPER_API int CalCoreMesh_GetCoreSubmeshCount(struct CalCoreMesh *self);
 //  CAL3D_WRAPPER_API std::vector<CalCoreSubmesh *>& CalCoreMesh_GetVectorCoreSubmesh(struct CalCoreMesh *self);
   CAL3D_WRAPPER_API const char* CalCoreMesh_GetName(struct CalCoreMesh *self);
@@ -342,18 +356,18 @@ extern "C"
   CAL3D_WRAPPER_API enum CalBoolean CalCoreModel_CreateCoreMaterialThread(struct CalCoreModel *self, int coreMaterialThreadId);
   CAL3D_WRAPPER_API void CalCoreModel_Delete(struct CalCoreModel *self);
   CAL3D_WRAPPER_API const char *CalCoreModel_GetName(struct CalCoreModel *self);
-  CAL3D_WRAPPER_API struct CalCoreAnimation *CalCoreModel_GetCoreAnimation(struct CalCoreModel *self, int coreAnimationId);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreAnimation *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreAnimation(struct CalCoreModel *self, int coreAnimationId);
   CAL3D_WRAPPER_API int CalCoreModel_GetCoreAnimationCount(struct CalCoreModel *self);
-  CAL3D_WRAPPER_API struct CalCoreMaterial *CalCoreModel_GetCoreMaterial(struct CalCoreModel *self, int coreMaterialId);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMaterial *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreMaterial(struct CalCoreModel *self, int coreMaterialId);
   CAL3D_WRAPPER_API int CalCoreModel_GetCoreMaterialCount(struct CalCoreModel *self);
   CAL3D_WRAPPER_API int CalCoreModel_GetCoreMaterialId(struct CalCoreModel *self, int coreMaterialThreadId, int coreMaterialSetId);
   CAL3D_WRAPPER_API int CalCoreModel_GetMaterialThreadCount( struct CalCoreModel *self );
   CAL3D_WRAPPER_API void CalCoreModel_GetMaterialThreadIDArray( struct CalCoreModel *self, int* outThreadIDs );
   CAL3D_WRAPPER_API int CalCoreModel_GetCoreMaterialIDByName(struct CalCoreModel *self, const char* matName );
-  CAL3D_WRAPPER_API struct CalCoreMesh *CalCoreModel_GetCoreMesh(struct CalCoreModel *self, int coreMeshId);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreMesh(struct CalCoreModel *self, int coreMeshId);
   CAL3D_WRAPPER_API int CalCoreModel_GetCoreMeshCount(struct CalCoreModel *self);
   CAL3D_WRAPPER_API int CalCoreModel_GetCoreMeshId(struct CalCoreModel *self, const char* coreMeshName );
-  CAL3D_WRAPPER_API struct CalCoreSkeleton *CalCoreModel_GetCoreSkeleton(struct CalCoreModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSkeleton *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreSkeleton(struct CalCoreModel *self);
   CAL3D_WRAPPER_API CalUserData CalCoreModel_GetUserData(struct CalCoreModel *self);
   CAL3D_WRAPPER_API int CalCoreModel_GetCoreMorphAnimationCount(struct CalCoreModel *self);
   CAL3D_WRAPPER_API int CalCoreModel_LoadCoreAnimation(struct CalCoreModel *self, const char *strFilename);
@@ -364,8 +378,8 @@ extern "C"
   CAL3D_WRAPPER_API int CalCoreModel_LoadCoreMaterialFromBuffer(struct CalCoreModel *self, const void* buffer);
   CAL3D_WRAPPER_API int CalCoreModel_LoadCoreMeshFromBuffer(struct CalCoreModel *self, const void* buffer);
   CAL3D_WRAPPER_API enum CalBoolean CalCoreModel_LoadCoreSkeletonFromBuffer(struct CalCoreModel *self, const void* buffer);
-  CAL3D_WRAPPER_API struct CalCoreModel *CalCoreModel_New(const char* name);
-  CAL3D_WRAPPER_API struct CalCoreModel *CalCoreModel_NewCopy( struct CalCoreModel* other );
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreModel *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_New(const char* name);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreModel *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_NewCopy( struct CalCoreModel* other );
   CAL3D_WRAPPER_API enum CalBoolean CalCoreModel_SaveCoreAnimation(struct CalCoreModel *self, const char *strFilename, int coreAnimtionId);
   CAL3D_WRAPPER_API enum CalBoolean CalCoreModel_SaveCoreMaterial(struct CalCoreModel *self, const char *strFilename, int coreMaterialId);
   CAL3D_WRAPPER_API enum CalBoolean CalCoreModel_SaveCoreMesh(struct CalCoreModel *self, const char *strFilename, int coreMeshId);
@@ -373,7 +387,7 @@ extern "C"
   CAL3D_WRAPPER_API enum CalBoolean CalCoreModel_SetCoreMaterialId(struct CalCoreModel *self, int coreMaterialThreadId, int coreMaterialSetId, int coreMaterialId);
   CAL3D_WRAPPER_API void CalCoreModel_SetCoreSkeleton(struct CalCoreModel *self, struct CalCoreSkeleton *pCoreSkeleton);
   CAL3D_WRAPPER_API void CalCoreModel_SetUserData(struct CalCoreModel *self, CalUserData userData);
-  CAL3D_WRAPPER_API struct CalCoreMorphAnimation* CalCoreModel_GetCoreMorphAnimation( struct CalCoreModel *self, int morphAnimID );
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMorphAnimation* CAL3D_WRAPPER_API_STRUCT_PTR CalCoreModel_GetCoreMorphAnimation( struct CalCoreModel *self, int morphAnimID );
   CAL3D_WRAPPER_API void CalCoreModel_SetName(struct CalCoreModel *self, const char* inName);
   CAL3D_WRAPPER_API void CalCoreModel_ReplaceCoreMesh(struct CalCoreModel *self, int coreMeshId, struct CalCoreMesh *pCoreMesh);
   CAL3D_WRAPPER_API enum CalBoolean CalCoreModel_AddMeshName(struct CalCoreModel *self, const char* name, int coreMeshId );
@@ -383,17 +397,17 @@ extern "C"
 // CalCoreSkeleton wrapper functions declaration                              //
 //****************************************************************************//
 
-  CAL3D_WRAPPER_API struct CalCoreSkeleton *CalCoreSkeleton_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSkeleton *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreSkeleton_New();
   CAL3D_WRAPPER_API void CalCoreSkeleton_Delete(struct CalCoreSkeleton* self);
 
   CAL3D_WRAPPER_API int CalCoreSkeleton_AddCoreBone(struct CalCoreSkeleton *self, struct CalCoreBone *pCoreBone);
   CAL3D_WRAPPER_API void CalCoreSkeleton_CalculateState(struct CalCoreSkeleton *self);
-  CAL3D_WRAPPER_API struct CalCoreBone *CalCoreSkeleton_GetCoreBone(struct CalCoreSkeleton *self, int coreBoneId);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreBone *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreSkeleton_GetCoreBone(struct CalCoreSkeleton *self, int coreBoneId);
   CAL3D_WRAPPER_API int CalCoreSkeleton_GetCoreBoneId(struct CalCoreSkeleton *self, const char *strName);
   CAL3D_WRAPPER_API enum CalBoolean CalCoreSkeleton_MapCoreBoneName( struct CalCoreSkeleton *self, int coreBoneID, const char* name );
   CAL3D_WRAPPER_API int CalCoreSkeleton_GetCoreBoneCount(struct CalCoreSkeleton *self);
   CAL3D_WRAPPER_API int CalCoreSkeleton_GetRootCoreBoneCount(struct CalCoreSkeleton *self);
-  CAL3D_WRAPPER_API struct CalCoreBone *CalCoreSkeleton_GetRootCoreBone(struct CalCoreSkeleton *self, int rootBoneIndex);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreBone *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreSkeleton_GetRootCoreBone(struct CalCoreSkeleton *self, int rootBoneIndex);
   CAL3D_WRAPPER_API int CalCoreSkeleton_GetRootCoreBoneID(struct CalCoreSkeleton *self, int rootBoneIndex);
 //  CAL3D_WRAPPER_API std::list<int>& CalCoreSkeleton_GetListRootCoreBoneId(struct CalCoreSkeleton *self);
 //  CAL3D_WRAPPER_API std::vector<CalCoreBone *>& CalCoreSkeleton_GetVectorCoreBone(struct CalCoreSkeleton *self);
@@ -467,7 +481,7 @@ extern "C"
 											int inVertexId,
 											const float* inNormal );
 
-  CAL3D_WRAPPER_API struct CalCoreSubmesh *CalCoreSubmesh_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSubmesh *CAL3D_WRAPPER_API_STRUCT_PTR CalCoreSubmesh_New();
   CAL3D_WRAPPER_API void CalCoreSubmesh_GetVertex( struct CalCoreSubmesh* self, int vertID, float* outPosition, float* outNormal );
   CAL3D_WRAPPER_API void CalCoreSubmesh_GetPositions( struct CalCoreSubmesh* self, float* outPointBuffer );
   CAL3D_WRAPPER_API void CalCoreSubmesh_SetPositions( struct CalCoreSubmesh* self, const float* inPointBuffer );
@@ -558,14 +572,14 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
 // CalLoader wrapper functions declaration                                    //
 //****************************************************************************//
 
-  CAL3D_WRAPPER_API struct CalCoreAnimation *CalLoader_LoadCoreAnimation(const char *strFilename);
-  CAL3D_WRAPPER_API struct CalCoreAnimation *CalLoader_LoadCoreAnimationFromBuffer(const void *data);
-  CAL3D_WRAPPER_API struct CalCoreMaterial *CalLoader_LoadCoreMaterial(const char *strFilename);
-  CAL3D_WRAPPER_API struct CalCoreMaterial *CalLoader_LoadCoreMaterialFromBuffer(const void *data);
-  CAL3D_WRAPPER_API struct CalCoreMesh *CalLoader_LoadCoreMesh(const char *strFilename);
-  CAL3D_WRAPPER_API struct CalCoreMesh *CalLoader_LoadCoreMeshFromBuffer(const void *data);
-  CAL3D_WRAPPER_API struct CalCoreSkeleton *CalLoader_LoadCoreSkeleton(const char *strFilename);
-  CAL3D_WRAPPER_API struct CalCoreSkeleton *CalLoader_LoadCoreSkeletonFromBuffer(const void *data);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreAnimation *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreAnimation(const char *strFilename);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreAnimation *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreAnimationFromBuffer(const void *data);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMaterial *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreMaterial(const char *strFilename);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMaterial *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreMaterialFromBuffer(const void *data);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreMesh(const char *strFilename);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreMeshFromBuffer(const void *data);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSkeleton *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreSkeleton(const char *strFilename);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSkeleton *CAL3D_WRAPPER_API_STRUCT_PTR CalLoader_LoadCoreSkeletonFromBuffer(const void *data);
 	enum CalLoaderFlags
 	{
 		CAL_LOADER_ROTATE_X_AXIS = 1,
@@ -579,11 +593,11 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
 //****************************************************************************//
 
   CAL3D_WRAPPER_API void CalMesh_Delete(struct CalMesh *self);
-  CAL3D_WRAPPER_API struct CalCoreMesh *CalMesh_GetCoreMesh(struct CalMesh *self);
-  CAL3D_WRAPPER_API struct CalSubmesh *CalMesh_GetSubmesh(struct CalMesh *self, int id);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalMesh_GetCoreMesh(struct CalMesh *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalSubmesh *CAL3D_WRAPPER_API_STRUCT_PTR CalMesh_GetSubmesh(struct CalMesh *self, int id);
   CAL3D_WRAPPER_API int CalMesh_GetSubmeshCount(struct CalMesh *self);
 //  CAL3D_WRAPPER_API std::vector<CalSubmesh *>& CalMesh_GetVectorSubmesh(struct CalMesh *self);
-  CAL3D_WRAPPER_API struct CalMesh *CalMesh_New(struct CalCoreMesh *pCoreMesh);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalMesh_New(struct CalCoreMesh *pCoreMesh);
   CAL3D_WRAPPER_API void CalMesh_SetLodLevel(struct CalMesh *self, float lodLevel);
   CAL3D_WRAPPER_API void CalMesh_SetMaterialSet(struct CalMesh *self, int setId);
   CAL3D_WRAPPER_API void CalMesh_SetModel(struct CalMesh *self, struct CalModel *pModel);
@@ -596,7 +610,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API enum CalBoolean CalMixer_ClearCycle(struct CalMixer *self, int id, float delay);
   CAL3D_WRAPPER_API void CalMixer_Delete(struct CalMixer *self);
   CAL3D_WRAPPER_API enum CalBoolean CalMixer_ExecuteAction(struct CalMixer *self, int id, float delayIn, float delayOut, enum CalBoolean autoLock);
-  CAL3D_WRAPPER_API struct CalMixer *CalMixer_New(struct CalModel *pModel);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalMixer *CAL3D_WRAPPER_API_STRUCT_PTR CalMixer_New(struct CalModel *pModel);
   CAL3D_WRAPPER_API void CalMixer_UpdateAnimation(struct CalMixer *self, float deltaTime);
   CAL3D_WRAPPER_API void CalMixer_UpdateSkeleton(struct CalMixer *self);
   CAL3D_WRAPPER_API void CalMixer_RemoveAction(struct CalMixer *self,int id);
@@ -608,7 +622,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   							int morphAnimID, float weight, float delay );
   CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Clear(struct CalMorphTargetMixer *self, int id, float delay);
   CAL3D_WRAPPER_API void CalMorphTargetMixer_Delete(struct CalMorphTargetMixer *self);
-  CAL3D_WRAPPER_API struct CalMorphTargetMixer *CalMorphTargetMixer_New(struct CalModel *pModel);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalMorphTargetMixer *CAL3D_WRAPPER_API_STRUCT_PTR CalMorphTargetMixer_New(struct CalModel *pModel);
   CAL3D_WRAPPER_API void CalMorphTargetMixer_Update( struct CalMorphTargetMixer* self, float deltaTime );
   CAL3D_WRAPPER_API int CalMorphTargetMixer_GetMorphTargetCount( struct CalMorphTargetMixer* self );
   CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Copy( struct CalMorphTargetMixer* self,
@@ -623,21 +637,21 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API enum CalBoolean CalModel_AttachMesh(struct CalModel *self, int coreMeshId);
   CAL3D_WRAPPER_API void CalModel_Delete(struct CalModel *self);
   CAL3D_WRAPPER_API enum CalBoolean CalModel_DetachMesh(struct CalModel *self, int coreMeshId);
-  CAL3D_WRAPPER_API struct CalCoreModel *CalModel_GetCoreModel(struct CalModel *self);
-  CAL3D_WRAPPER_API struct CalMesh *CalModel_GetMesh(struct CalModel *self, int coreMeshId);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreModel *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetCoreModel(struct CalModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetMesh(struct CalModel *self, int coreMeshId);
   CAL3D_WRAPPER_API int CalModel_GetMeshIDOfCoreMeshID( struct CalModel *self, int coreMeshId );
-  CAL3D_WRAPPER_API struct CalMixer *CalModel_GetMixer(struct CalModel *self);
-  CAL3D_WRAPPER_API struct CalMorphTargetMixer *CalModel_GetMorphTargetMixer(struct CalModel *self);
-  CAL3D_WRAPPER_API struct CalPhysique *CalModel_GetPhysique(struct CalModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalMixer *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetMixer(struct CalModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalMorphTargetMixer *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetMorphTargetMixer(struct CalModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalPhysique *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetPhysique(struct CalModel *self);
   CAL3D_WRAPPER_API void CalModel_SetPhysique(struct CalModel *self, struct CalPhysique *phys);
-  CAL3D_WRAPPER_API struct CalRenderer *CalModel_GetRenderer(struct CalModel *self);
-  CAL3D_WRAPPER_API struct CalSkeleton *CalModel_GetSkeleton(struct CalModel *self);
-  CAL3D_WRAPPER_API struct CalSpringSystem *CalModel_GetSpringSystem(struct CalModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalRenderer *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetRenderer(struct CalModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalSkeleton *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetSkeleton(struct CalModel *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalSpringSystem *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetSpringSystem(struct CalModel *self);
   CAL3D_WRAPPER_API CalUserData CalModel_GetUserData(struct CalModel *self);
   CAL3D_WRAPPER_API int CalModel_GetMeshCount(struct CalModel *self);
-  CAL3D_WRAPPER_API struct CalMesh *CalModel_GetMeshByMeshID(struct CalModel *self, int meshId);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalMesh *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_GetMeshByMeshID(struct CalModel *self, int meshId);
 //  CAL3D_WRAPPER_API std::vector<CalMesh *>& CalModel_GetVectorMesh(struct CalModel *self);
-  CAL3D_WRAPPER_API struct CalModel *CalModel_New(struct CalCoreModel* pCoreModel);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalModel *CAL3D_WRAPPER_API_STRUCT_PTR CalModel_New(struct CalCoreModel* pCoreModel);
   CAL3D_WRAPPER_API void CalModel_SetLodLevel(struct CalModel *self, float lodLevel);
   CAL3D_WRAPPER_API void CalModel_SetMaterialSet(struct CalModel *self, int setId);
   CAL3D_WRAPPER_API void CalModel_SetUserData(struct CalModel *self, CalUserData userData);
@@ -653,9 +667,9 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API int CalPhysique_CalculateVerticesNormalsAndTexCoords(struct CalPhysique *self, struct CalSubmesh *pSubmesh, float *pVertexBuffer, int NumTexCoords);
   CAL3D_WRAPPER_API int CalPhysique_CalculateTangentSpaces(struct CalPhysique *self, struct CalSubmesh *pSubmesh, int mapId, float *pTangentSpaceBuffer);
   CAL3D_WRAPPER_API void CalPhysique_Delete(struct CalPhysique *self);
-  CAL3D_WRAPPER_API struct CalPhysique *CalPhysique_New(struct CalModel* pModel);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalPhysique *CAL3D_WRAPPER_API_STRUCT_PTR CalPhysique_New(struct CalModel* pModel);
   CAL3D_WRAPPER_API void CalPhysique_Update(struct CalPhysique *self);
-  CAL3D_WRAPPER_API struct CalPhysique *CalPhysiqueDualQuat_New(struct CalModel* pModel);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalPhysique *CAL3D_WRAPPER_API_STRUCT_PTR CalPhysiqueDualQuat_New(struct CalModel* pModel);
 
 //****************************************************************************//
 // CalPlatform wrapper functions declaration                                  //
@@ -674,7 +688,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API float *CalQuaternion_Get(struct CalQuaternion *self);
   CAL3D_WRAPPER_API void CalQuaternion_Multiply(struct CalQuaternion *self, const struct CalQuaternion *pQ);
   CAL3D_WRAPPER_API void CalQuaternion_MultiplyVector(struct CalQuaternion *self, const struct CalVector *pV);
-  CAL3D_WRAPPER_API struct CalQuaternion *CalQuaternion_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion *CAL3D_WRAPPER_API_STRUCT_PTR CalQuaternion_New();
   CAL3D_WRAPPER_API void CalQuaternion_Op_Multiply(struct CalQuaternion *pResult, const struct CalQuaternion *pQ, const struct CalQuaternion *pR);
   CAL3D_WRAPPER_API void CalQuaternion_Set(struct CalQuaternion *self, float qx, float qy, float qz, float qw);
 
@@ -703,7 +717,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API int CalRenderer_GetVerticesNormalsAndTexCoords(struct CalRenderer *self, float *pVertexBuffer, int NumTexCoords);
   CAL3D_WRAPPER_API int CalRenderer_GetTangentSpaces(struct CalRenderer *self, int mapId, float *pTangentSpaceBuffer);
   CAL3D_WRAPPER_API enum CalBoolean  CalRenderer_IsTangentsEnabled(struct CalRenderer *self, int mapId);
-  CAL3D_WRAPPER_API struct CalRenderer *CalRenderer_New(struct CalModel* pModel);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalRenderer *CAL3D_WRAPPER_API_STRUCT_PTR CalRenderer_New(struct CalModel* pModel);
   CAL3D_WRAPPER_API enum CalBoolean CalRenderer_SelectMeshSubmesh(struct CalRenderer *self, int meshId, int submeshId);
 
 //****************************************************************************//
@@ -711,7 +725,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
 //****************************************************************************//
 
   CAL3D_WRAPPER_API void CalSaver_Delete(struct CalSaver *self);
-  CAL3D_WRAPPER_API struct CalSaver *CalSaver_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalSaver *CAL3D_WRAPPER_API_STRUCT_PTR CalSaver_New();
   CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreAnimation(struct CalSaver *self, const char *strFilename, struct  CalCoreAnimation *pCoreAnimation);
   CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreMaterial(struct CalSaver *self, const char *strFilename, struct CalCoreMaterial *pCoreMaterial);
   CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreMesh(struct CalSaver *self, const char *strFilename, struct CalCoreMesh *pCoreMesh);
@@ -727,15 +741,15 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API void CalSkeleton_CalculateState(struct CalSkeleton *self);
   CAL3D_WRAPPER_API void CalSkeleton_ClearState(struct CalSkeleton *self);
   CAL3D_WRAPPER_API void CalSkeleton_Delete(struct CalSkeleton *self);
-  CAL3D_WRAPPER_API struct CalBone *CalSkeleton_GetBone(struct CalSkeleton *self, int boneId);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalBone *CAL3D_WRAPPER_API_STRUCT_PTR CalSkeleton_GetBone(struct CalSkeleton *self, int boneId);
   CAL3D_WRAPPER_API int CalSkeleton_GetBoneCount(struct CalSkeleton *self);
-  CAL3D_WRAPPER_API struct CalCoreSkeleton *CalSkeleton_GetCoreSkeleton(struct CalSkeleton *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSkeleton *CAL3D_WRAPPER_API_STRUCT_PTR CalSkeleton_GetCoreSkeleton(struct CalSkeleton *self);
 //  CAL3D_WRAPPER_API std::vector<CalBone *>& CalSkeleton_GetVectorBone(struct CalSkeleton *self);
   CAL3D_WRAPPER_API void CalSkeleton_LockState(struct CalSkeleton *self);
-  CAL3D_WRAPPER_API struct CalSkeleton *CalSkeleton_New(struct CalCoreSkeleton* pCoreSkeleton);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalSkeleton *CAL3D_WRAPPER_API_STRUCT_PTR CalSkeleton_New(struct CalCoreSkeleton* pCoreSkeleton);
   CAL3D_WRAPPER_API void CalSkeleton_GetBoneBoundingBox(struct CalSkeleton *self, float *min, float *max);
   CAL3D_WRAPPER_API void CalSkeleton_CalculateBoundingBoxes(struct CalSkeleton *self);
-  CAL3D_WRAPPER_API struct CalQuaternion* CalSkeleton_GetBoneRotation( struct CalSkeleton *self,
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalQuaternion* CAL3D_WRAPPER_API_STRUCT_PTR CalSkeleton_GetBoneRotation( struct CalSkeleton *self,
 																		int boneID );
   CAL3D_WRAPPER_API void CalSkeleton_GetBoneRotations( struct CalSkeleton *self, float* outQuats );
   /*!
@@ -764,10 +778,10 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API void CalSpringSystem_CalculateForces(struct CalSpringSystem *self, struct CalSubmesh *pSubmesh, float deltaTime);
   CAL3D_WRAPPER_API void CalSpringSystem_CalculateVertices(struct CalSpringSystem *self, struct CalSubmesh *pSubmesh, float deltaTime);
   CAL3D_WRAPPER_API void CalSpringSystem_Delete(struct CalSpringSystem *self);
-  CAL3D_WRAPPER_API struct CalSpringSystem *CalSpringSystem_New(struct CalModel *pModel);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalSpringSystem *CAL3D_WRAPPER_API_STRUCT_PTR CalSpringSystem_New(struct CalModel *pModel);
   CAL3D_WRAPPER_API void CalSpringSystem_Update(struct CalSpringSystem *self, float deltaTime);
-  CAL3D_WRAPPER_API struct CalVector* CalSpringSystem_GetGravityVector(struct CalSpringSystem *self);
-  CAL3D_WRAPPER_API struct CalVector* CalSpringSystem_GetForceVector(struct CalSpringSystem *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector* CAL3D_WRAPPER_API_STRUCT_PTR CalSpringSystem_GetGravityVector(struct CalSpringSystem *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector* CAL3D_WRAPPER_API_STRUCT_PTR CalSpringSystem_GetForceVector(struct CalSpringSystem *self);
   CAL3D_WRAPPER_API void CalSpringSystem_SetGravityVector(struct CalSpringSystem *self, struct CalVector* grav);
   CAL3D_WRAPPER_API void CalSpringSystem_SetForceVector(struct CalSpringSystem *self, struct CalVector* force);
   CAL3D_WRAPPER_API void CalSpringSystem_ResetPositions(struct CalSpringSystem *self);
@@ -777,7 +791,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
 //****************************************************************************//
 
   CAL3D_WRAPPER_API void CalSubmesh_Delete(struct CalSubmesh *self);
-  CAL3D_WRAPPER_API struct CalCoreSubmesh *CalSubmesh_GetCoreSubmesh(struct CalSubmesh *self);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalCoreSubmesh *CAL3D_WRAPPER_API_STRUCT_PTR CalSubmesh_GetCoreSubmesh(struct CalSubmesh *self);
   CAL3D_WRAPPER_API int CalSubmesh_GetCoreMaterialId(struct CalSubmesh *self);
   CAL3D_WRAPPER_API int CalSubmesh_GetFaceCount(struct CalSubmesh *self);
   CAL3D_WRAPPER_API int CalSubmesh_GetFaces(struct CalSubmesh *self, CalIndex *pFaceBuffer);
@@ -787,7 +801,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
 //  CAL3D_WRAPPER_API std::vector<CalVector>& CalSubmesh_GetVectorVertex(struct CalSubmesh *self);
   CAL3D_WRAPPER_API int CalSubmesh_GetVertexCount(struct CalSubmesh *self);
   CAL3D_WRAPPER_API enum CalBoolean CalSubmesh_HasInternalData(struct CalSubmesh *self);
-  CAL3D_WRAPPER_API struct CalSubmesh *CalSubmesh_New(struct CalCoreSubmesh* coreSubmesh);
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalSubmesh *CAL3D_WRAPPER_API_STRUCT_PTR CalSubmesh_New(struct CalCoreSubmesh* coreSubmesh);
   CAL3D_WRAPPER_API void CalSubmesh_SetCoreMaterialId(struct CalSubmesh *self, int coreMaterialId);
   CAL3D_WRAPPER_API void CalSubmesh_SetLodLevel(struct CalSubmesh *self, float lodLevel);
   CAL3D_WRAPPER_API void CalSubmesh_GetVectorWeight( CalSubmesh *self, float* outWeights );
@@ -804,7 +818,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API void CalVector_InverseScale(struct CalVector *self, float d);
   CAL3D_WRAPPER_API float *CalVector_Get(struct CalVector *self);
   CAL3D_WRAPPER_API float CalVector_Length(struct CalVector *self);
-  CAL3D_WRAPPER_API struct CalVector *CalVector_New();
+  CAL3D_WRAPPER_API_STRUCT_PTR_PREFIX struct CalVector *CAL3D_WRAPPER_API_STRUCT_PTR CalVector_New();
   CAL3D_WRAPPER_API float CalVector_Normalize(struct CalVector *self);
   CAL3D_WRAPPER_API void CalVector_Op_Add(struct CalVector *pResult, struct CalVector *pV, struct CalVector *pU);
   CAL3D_WRAPPER_API void CalVector_Op_Subtract(struct CalVector *pResult, struct CalVector *pV, struct CalVector *pU);
