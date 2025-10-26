@@ -30,6 +30,8 @@ typedef int CalIndex;
 // Defines for Win32 and MingW32                                              //
 //****************************************************************************//
 
+
+
 #ifdef _WIN32
 
 #ifdef __MINGW32__
@@ -219,10 +221,9 @@ extern "C"
   CAL3D_WRAPPER_API void CalBone_SetRotation2(struct CalBone *self, float w, float x, float y, float z);
   CAL3D_WRAPPER_API void CalBone_SetCoreState(struct CalBone *self);
   CAL3D_WRAPPER_API void CalBone_SetCoreStateRecursive(struct CalBone *self);
-  CAL3D_WRAPPER_API enum CalBoolean CalBone_GetBoundingBox( struct CalBone *self, struct CalCoreModel* model,
-  													float* outEightPoints );
+  CAL3D_WRAPPER_API enum CalBoolean CalBone_GetBoundingBox( struct CalBone *self, struct CalCoreModel* model, float* outEightPoints );
 
-
+  
 //****************************************************************************//
 // CalCoreAnimation wrapper functions declaration                             //
 //****************************************************************************//
@@ -490,10 +491,8 @@ extern "C"
 													int inCollapseID, int inFaceCollapseCount,
 													int inInfluenceCount, const int* inBoneIDs, const float* inWeights ); // JWW
 */
-CAL3D_WRAPPER_API void CalCoreSubmesh_GetVertexTextureCoordinate( struct CalCoreSubmesh *self, int vertexId, int mapID,
-													float* outU, float* outV );
-CAL3D_WRAPPER_API void CalCoreSubmesh_SetVertexTextureCoordinate( struct CalCoreSubmesh *self, int vertexId, int mapID,
-													float inU, float inV );
+CAL3D_WRAPPER_API void CalCoreSubmesh_GetVertexTextureCoordinate( struct CalCoreSubmesh *self, int vertexId, int mapID, float* outU, float* outV );
+CAL3D_WRAPPER_API void CalCoreSubmesh_SetVertexTextureCoordinate( struct CalCoreSubmesh *self, int vertexId, int mapID, float inU, float inV );
 CAL3D_WRAPPER_API enum CalBoolean  CalCoreSubmesh_IsTangentsEnabled(struct CalCoreSubmesh *self, int mapId);
 CAL3D_WRAPPER_API enum CalBoolean  CalCoreSubmesh_EnableTangents(struct CalCoreSubmesh *self, int mapId, enum CalBoolean enabled);
 CAL3D_WRAPPER_API int CalCoreSubmesh_AddSubMorphTarget( CalCoreSubmesh *self, CalCoreSubMorphTargetDiffMap* inTarget );
@@ -504,22 +503,18 @@ CAL3D_WRAPPER_API CalCoreSubMorphTarget** CalCoreSubmesh_GetVectorSubMorphTarget
 //****************************************************************************//
 // CalCoreSubMorphTarget wrapper functions declaration                        //
 //****************************************************************************//
-CAL3D_WRAPPER_API void CalCoreSubMorphTarget_GetPositionsAndNormals( CalCoreSubMorphTarget* inSelf,
-																float* outVertexBuffer );
+
+CAL3D_WRAPPER_API void CalCoreSubMorphTarget_GetPositionsAndNormals( CalCoreSubMorphTarget* inSelf, float* outVertexBuffer );
 
 //****************************************************************************//
 // CalCoreSubMorphTargetDiffMap wrapper functions declaration                 //
 //****************************************************************************//
 CAL3D_WRAPPER_API CalCoreSubMorphTargetDiffMap* CalCoreSubMorphTargetDiffMap_New();
-CAL3D_WRAPPER_API CalCoreSubMorphTargetDiffMap* CalCoreSubMorphTargetDiffMap_Clone(
-	const CalCoreSubMorphTargetDiffMap* inOther );
+CAL3D_WRAPPER_API CalCoreSubMorphTargetDiffMap* CalCoreSubMorphTargetDiffMap_Clone(const CalCoreSubMorphTargetDiffMap* inOther );
 CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Delete( CalCoreSubMorphTargetDiffMap* inSelf );
-CAL3D_WRAPPER_API bool CalCoreSubMorphTargetDiffMap_Reserve( CalCoreSubMorphTargetDiffMap* inSelf,
-	int inNumDifferences );
-CAL3D_WRAPPER_API bool CalCoreSubMorphTargetDiffMap_AppendVertex( CalCoreSubMorphTargetDiffMap* inSelf,
-	int inVertexID, const float* inPositionOffset, const float* inNormalOffset );
-CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTargetDiffMap* inSelf,
-	float inScaleFactor );
+CAL3D_WRAPPER_API bool CalCoreSubMorphTargetDiffMap_Reserve( CalCoreSubMorphTargetDiffMap* inSelf,int inNumDifferences );
+CAL3D_WRAPPER_API bool CalCoreSubMorphTargetDiffMap_AppendVertex( CalCoreSubMorphTargetDiffMap* inSelf,int inVertexID, const float* inPositionOffset, const float* inNormalOffset );
+CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTargetDiffMap* inSelf,float inScaleFactor );
 
 //****************************************************************************//
 // CalError wrapper functions declaration                                     //
@@ -606,8 +601,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
 //****************************************************************************//
 // CalMorphTargetMixer wrapper functions declaration                          //
 //****************************************************************************//
-  CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Blend( struct CalMorphTargetMixer* self,
-  							int morphAnimID, float weight, float delay );
+  CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Blend( struct CalMorphTargetMixer* self, int morphAnimID, float weight, float delay );
   CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Clear(struct CalMorphTargetMixer *self, int id, float delay);
   CAL3D_WRAPPER_API void CalMorphTargetMixer_Delete(struct CalMorphTargetMixer *self);
   CAL3D_WRAPPER_API void* CalMorphTargetMixer_New(struct CalModel *pModel);
@@ -717,9 +711,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreAnimation(struct CalSaver *self, const char *strFilename, struct  CalCoreAnimation *pCoreAnimation);
   CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreMaterial(struct CalSaver *self, const char *strFilename, struct CalCoreMaterial *pCoreMaterial);
   CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreMesh(struct CalSaver *self, const char *strFilename, struct CalCoreMesh *pCoreMesh);
-  CAL3D_WRAPPER_API enum CalBoolean	CalSaver_SaveCoreMeshToBuffer( struct CalCoreMesh *pCoreMesh,
-																	void** outBuffer,
-																	int* outByteCount );
+  CAL3D_WRAPPER_API enum CalBoolean	CalSaver_SaveCoreMeshToBuffer( struct CalCoreMesh *pCoreMesh,void** outBuffer,int* outByteCount );
   CAL3D_WRAPPER_API enum CalBoolean CalSaver_SaveCoreSkeleton(struct CalSaver *self, const char *strFilename, struct CalCoreSkeleton *pCoreSkeleton);
 
 //****************************************************************************//
