@@ -24,6 +24,23 @@ set_target_properties(custom_skeleton_importer
   PROPERTIES FOLDER "howtos")
 add_test(NAME custom_skeleton_importer COMMAND custom_skeleton_importer)
 
+# cal3d_skeleton_converter
+
+add_executable(cal3d_skeleton_converter
+  cal3d_skeleton_converter.cc
+  ${CMAKE_SOURCE_DIR}/wrapper/src/skeleton_converter.cpp)
+target_link_libraries(cal3d_skeleton_converter
+  ozz_animation_offline
+  ozz_animation
+  ozz_base)
+target_include_directories(cal3d_skeleton_converter PRIVATE
+  ${CMAKE_SOURCE_DIR}/wrapper/include
+  ${CMAKE_SOURCE_DIR}/wrapper)
+target_copy_shared_libraries(cal3d_skeleton_converter)
+set_target_properties(cal3d_skeleton_converter
+  PROPERTIES FOLDER "howtos")
+add_test(NAME cal3d_skeleton_converter COMMAND cal3d_skeleton_converter)
+
 # custom_animation_importer
 
 add_executable(custom_animation_importer
