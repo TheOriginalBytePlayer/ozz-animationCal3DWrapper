@@ -484,6 +484,50 @@ void CalCoreBone::scale(float factor)
 	}
 }
 
+ /*****************************************************************************/
+/** Calculates the bone length.
+  *
+  * This function calculates the length of the bone by computing the distance
+  * between this bone's absolute position and its parent's absolute position.
+  * The bone length is computed using both TRANSFORMATIONS (absolute positions)
+  * and LOCALTRANSFORMATIONS (relative transformations).
+  *
+  * The algorithm:
+  * 1. If the bone has no parent (root bone), the length is the magnitude of
+  *    the bone's translation (local transformation).
+  * 2. If the bone has a parent, the length is the distance between the bone's
+  *    absolute translation and the parent's absolute translation.
+  *
+  * The absolute translation is calculated by:
+  * - Rotating the relative translation by the parent's absolute rotation
+  * - Adding the parent's absolute translation
+  *
+  * This ensures that both local transformations and the accumulated parent
+  * transformations are properly accounted for in the length calculation.
+  *
+  * @return The length of the bone as a float value.
+  *****************************************************************************/
+
+float CalCoreBone::calculateLength()
+{
+  // If this is a root bone (no parent), return the magnitude of its translation
+  if(m_parentId == -1)
+  {
+    return m_translation.length();
+  }
+  
+  // Get the parent bone
+  CalCoreBone *pParent = m_pCoreSkeleton->getCoreBone(m_parentId);
+  
+  // Calculate the distance between this bone's absolute position and parent's absolute position
+  // The absolute positions are calculated using both local transformations (m_translation, m_rotation)
+  // and parent transformations (parent's absolute rotation and translation)
+  CalVector boneToParent = m_translationAbsolute - pParent->getTranslationAbsolute();
+  
+  // Return the length (magnitude) of this vector
+  return boneToParent.length();
+}
+
 
 //****************************************************************************//
 
