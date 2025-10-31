@@ -54,6 +54,7 @@ public:
   void getBoundingData(int planeId,CalVector & position); 
   bool isBoundingBoxPrecomputed();
   void scale(float factor);
+  float calculateLength();
   
 private:
   std::string m_strName;

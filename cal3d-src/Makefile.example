@@ -1,0 +1,35 @@
+# Makefile for building the bone length example
+# This is a simple standalone Makefile to demonstrate the bone length calculation
+
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra -I./src
+LDFLAGS = 
+
+# Source files needed for the example
+CORE_SOURCES = \
+	src/cal3d/corebone.cpp \
+	src/cal3d/coreskeleton.cpp \
+	src/cal3d/vector.cpp \
+	src/cal3d/quaternion.cpp \
+	src/cal3d/matrix.cpp \
+	src/cal3d/error.cpp \
+	src/cal3d/global.cpp \
+	src/cal3d/platform.cpp
+
+EXAMPLE_SOURCE = bone_length_example.cpp
+
+OBJECTS = $(CORE_SOURCES:.cpp=.o) $(EXAMPLE_SOURCE:.cpp=.o)
+EXECUTABLE = bone_length_example
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(LDFLAGS) -o $@ $^
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+clean:
+	rm -f $(OBJECTS) $(EXECUTABLE)
+
+.PHONY: all clean
