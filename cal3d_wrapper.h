@@ -16,6 +16,10 @@
 #ifndef CAL_CAL3D_WRAPPER_H
 #define CAL_CAL3D_WRAPPER_H
 
+#ifndef CAL3D_WRAPPER_EXPORTS
+#define CAL3D_WRAPPER_EXPORTS
+#endif
+
 #ifdef __cplusplus
 //#include "cal3d/global.h"	// out by JWWalker
 #endif
@@ -605,6 +609,7 @@ CAL3D_WRAPPER_API void CalCoreSubMorphTargetDiffMap_Scale( CalCoreSubMorphTarget
   CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Clear(struct CalMorphTargetMixer *self, int id, float delay);
   CAL3D_WRAPPER_API void CalMorphTargetMixer_Delete(struct CalMorphTargetMixer *self);
   CAL3D_WRAPPER_API void* CalMorphTargetMixer_New(struct CalModel *pModel);
+  //CAL3D_WRAPPER_API struct CalMorphTargetMixer *CalMorphTargetMixer_New(struct CalModel *pModel);
   CAL3D_WRAPPER_API void CalMorphTargetMixer_Update( struct CalMorphTargetMixer* self, float deltaTime );
   CAL3D_WRAPPER_API int CalMorphTargetMixer_GetMorphTargetCount( struct CalMorphTargetMixer* self );
   CAL3D_WRAPPER_API enum CalBoolean CalMorphTargetMixer_Copy( struct CalMorphTargetMixer* self,
