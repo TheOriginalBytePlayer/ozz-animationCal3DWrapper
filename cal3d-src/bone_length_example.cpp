@@ -37,14 +37,15 @@ int main()
     std::cout << "======================================\n\n";
     
     // Create a simple skeleton hierarchy for demonstration
-    CalCoreSkeleton* pSkeleton = new CalCoreSkeleton();
+    // CalCoreSkeleton uses reference counting, so we use RefPtr
+    CalCoreSkeletonPtr pSkeleton = new CalCoreSkeleton();
     
     // Create root bone (e.g., "Hip")
     CalCoreBone* pRootBone = new CalCoreBone("Hip");
     pRootBone->setParentId(-1);  // No parent (root bone)
     pRootBone->setTranslation(CalVector(0.0f, 1.0f, 0.0f));  // 1 unit above origin
     pRootBone->setRotation(CalQuaternion(0.0f, 0.0f, 0.0f, 1.0f));  // Identity rotation
-    pRootBone->setCoreSkeleton(pSkeleton);
+    pRootBone->setCoreSkeleton(pSkeleton.get());
     int rootId = pSkeleton->addCoreBone(pRootBone);
     
     // Create child bone 1 (e.g., "Spine")
@@ -52,7 +53,7 @@ int main()
     pChildBone1->setParentId(rootId);
     pChildBone1->setTranslation(CalVector(0.0f, 0.5f, 0.0f));  // 0.5 units above parent
     pChildBone1->setRotation(CalQuaternion(0.0f, 0.0f, 0.0f, 1.0f));  // Identity rotation
-    pChildBone1->setCoreSkeleton(pSkeleton);
+    pChildBone1->setCoreSkeleton(pSkeleton.get());
     int child1Id = pSkeleton->addCoreBone(pChildBone1);
     pRootBone->addChildId(child1Id);
     
@@ -61,7 +62,7 @@ int main()
     pChildBone2->setParentId(child1Id);
     pChildBone2->setTranslation(CalVector(0.0f, 0.6f, 0.0f));  // 0.6 units above parent
     pChildBone2->setRotation(CalQuaternion(0.0f, 0.0f, 0.0f, 1.0f));  // Identity rotation
-    pChildBone2->setCoreSkeleton(pSkeleton);
+    pChildBone2->setCoreSkeleton(pSkeleton.get());
     int child2Id = pSkeleton->addCoreBone(pChildBone2);
     pChildBone1->addChildId(child2Id);
     
@@ -71,7 +72,7 @@ int main()
     // Rotate 90 degrees around Z axis (quaternion for 90 deg around Z)
     pChildBone3->setTranslation(CalVector(0.3f, 0.0f, 0.0f));  // 0.3 units to the left
     pChildBone3->setRotation(CalQuaternion(0.0f, 0.0f, 0.707f, 0.707f));  // 90 deg rotation
-    pChildBone3->setCoreSkeleton(pSkeleton);
+    pChildBone3->setCoreSkeleton(pSkeleton.get());
     int child3Id = pSkeleton->addCoreBone(pChildBone3);
     pChildBone2->addChildId(child3Id);
     
@@ -141,8 +142,8 @@ int main()
     std::cout << "This ensures accurate bone length calculation regardless of\n";
     std::cout << "the hierarchy depth and parent transformations.\n";
     
-    // Clean up
-    delete pSkeleton;
+    // Clean up is automatic with RefPtr
+    // pSkeleton will be automatically cleaned up when it goes out of scope
     
     return 0;
 }
