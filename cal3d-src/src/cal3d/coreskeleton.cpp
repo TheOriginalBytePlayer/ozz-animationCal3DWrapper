@@ -242,3 +242,44 @@ void CalCoreSkeleton::scale(float factor)
   }
 
 }
+
+ /*****************************************************************************/
+/** Calculates the lengths of all bones in the skeleton.
+  *
+  * This function calculates the length of each bone in the skeleton by 
+  * computing the distance between each bone's absolute position and its
+  * parent's absolute position. The calculation takes into account both
+  * TRANSFORMATIONS (absolute positions) and LOCALTRANSFORMATIONS (relative
+  * transformations).
+  *
+  * Before calling this function, calculateState() should be called to ensure
+  * that all absolute transformations are up-to-date.
+  *
+  * The algorithm for each bone:
+  * 1. For root bones (no parent): length = magnitude of the bone's local translation
+  * 2. For child bones: length = distance between bone's absolute position and 
+  *    parent's absolute position
+  *
+  * The absolute position of a bone is calculated by:
+  * - Rotating the relative translation by the parent's absolute rotation
+  * - Adding the parent's absolute translation
+  * This ensures both local and parent transformations are included.
+  *
+  * @return A vector of floats containing the length of each bone in the skeleton,
+  *         indexed by bone ID.
+  *****************************************************************************/
+
+std::vector<float> CalCoreSkeleton::calculateBoneLengths()
+{
+  std::vector<float> boneLengths;
+  boneLengths.reserve(m_vectorCoreBone.size());
+  
+  // Calculate length for each bone
+  for(CalCoreBone* pBone : m_vectorCoreBone)
+  {
+    float length = pBone->calculateLength();
+    boneLengths.push_back(length);
+  }
+  
+  return boneLengths;
+}

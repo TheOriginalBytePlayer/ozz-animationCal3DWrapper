@@ -38,6 +38,7 @@ public:
   std::vector<CalCoreBone *>& getVectorCoreBone();
   void calculateBoundingBoxes(CalCoreModel * pCoreModel);
   void scale(float factor);
+  std::vector<float> calculateBoneLengths();
 
 private:
   std::vector<CalCoreBone *> m_vectorCoreBone;

@@ -80,6 +80,6 @@ namespace cal3d
   };
 }
 
-// namespace Cal = cal3d;
+namespace Cal = cal3d;
 
 #endif
