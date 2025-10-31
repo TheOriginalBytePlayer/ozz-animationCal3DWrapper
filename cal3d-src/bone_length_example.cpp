@@ -38,7 +38,8 @@ int main()
     
     // Create a simple skeleton hierarchy for demonstration
     // CalCoreSkeleton uses reference counting, so we use RefPtr
-    CalCoreSkeletonPtr pSkeleton = new CalCoreSkeleton();
+    // The RefPtr constructor will properly initialize the reference count
+    CalCoreSkeletonPtr pSkeleton(new CalCoreSkeleton());
     
     // Create root bone (e.g., "Hip")
     CalCoreBone* pRootBone = new CalCoreBone("Hip");

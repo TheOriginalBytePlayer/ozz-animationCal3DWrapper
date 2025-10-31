@@ -275,9 +275,9 @@ std::vector<float> CalCoreSkeleton::calculateBoneLengths()
   boneLengths.reserve(m_vectorCoreBone.size());
   
   // Calculate length for each bone
-  for(size_t boneId = 0; boneId < m_vectorCoreBone.size(); ++boneId)
+  for(CalCoreBone* pBone : m_vectorCoreBone)
   {
-    float length = m_vectorCoreBone[boneId]->calculateLength();
+    float length = pBone->calculateLength();
     boneLengths.push_back(length);
   }
   
