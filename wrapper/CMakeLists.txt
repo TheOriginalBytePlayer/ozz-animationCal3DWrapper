@@ -18,6 +18,7 @@ include_directories(
 set(WRAPPER_SOURCES
     src/cal3d_wrapper_impl.cpp
     src/core_model.cpp
+    src/skeleton_converter.cpp
     src/all_stubs.cpp
 )
 
@@ -44,6 +45,7 @@ endif()
 # Link with ozz libraries
 target_link_libraries(cal3d_wrapper
     ozz_animation
+    ozz_animation_offline
     ozz_base
     ozz_geometry
 )

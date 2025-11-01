@@ -54,11 +54,14 @@ struct CalCoreSubMorphTarget;
 #include "ozz/animation/runtime/sampling_job.h"
 #include "ozz/animation/runtime/blending_job.h"
 #include "ozz/animation/runtime/local_to_model_job.h"
+#include "ozz/animation/offline/raw_skeleton.h"
+#include "ozz/animation/offline/skeleton_builder.h"
 #include "ozz/base/maths/soa_transform.h"
 #include "ozz/base/maths/vec_float.h"
 #include "ozz/base/maths/quaternion.h"
 #include "ozz/base/maths/simd_math.h"
 #include "ozz/base/containers/vector.h"
+#include "ozz/base/memory/unique_ptr.h"
 
 // Cal3D wrapper types
 typedef void* CalUserData;
@@ -346,7 +349,11 @@ struct CalLoader {
 // Utility functions
 
 namespace WrapperUtil {
-    // Convert Cal3D skeleton to ozz skeleton
+    // Convert Cal3D skeleton to ozz RawSkeleton (intermediate format)
+    ozz::animation::offline::RawSkeleton* BuildRawSkeletonFromCal3D(
+        const CalCoreSkeleton* coreSkeleton);
+    
+    // Convert Cal3D skeleton to ozz runtime skeleton
     ozz::animation::Skeleton* BuildOzzSkeleton(const CalCoreSkeleton* coreSkeleton);
     
     // Convert Cal3D animation to ozz animation
